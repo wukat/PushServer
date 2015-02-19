@@ -6,11 +6,50 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
+        <title>HTTP Polling</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://jquery-json.googlecode.com/files/jquery.json-2.2.min.js"></script>
+        <script type="text/javascript">
+            jQuery(function($) {
+                $('#barChooser').click(function() {
+                    $.post('BarChooserServlet', function(data) {
+                        $('#bars').empty();
+                        $('#concreteBar').empty();
+                        $('#bars').append('<h4>Wybierz bar</h4>');
+                        for (var i in data.bars) {
+                            $('#bars').append('<input type="radio" name="groupOfBars" onchange="changeBar(this);" value="' + data.bars[i] + '">' + data.bars[i] + '<br>');
+                        }
+                    });
+                });
+            });
+            function changeBar(radioButton) {
+                var bar = radioButton.value;
+                $.post('BarPublishSubscribeServlet', {myBar: bar}, function(data) {
+                    $('#concreteBar').empty();
+                    $('#concreteBar').append('<h1>' + bar + '</h1>');
+                    $('#concreteBar').append('<h2>Przygotuj drink:</h2>');
+                    for (var i in data.drinks) {
+                        $('#concreteBar').append('<button id="' + data.drinks[i] + '" onclick="createDrink(this);">' + data.drinks[i] + '</button>');
+                    }
+                    $('#concreteBar').append('<h2>Statystyki sprzedazy:</h2>');
+                });
+            }
+            function createDrink(button) {
+                var drink = button.value;
+                alert(drink);
+            }
+        </script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <h1>Witaj barmanie!</h1>
+        <button id="barChooser">Pokaz dostepne miejsca pracy</button>
+        
+        <div id="bars">
+            
+        </div>
+        
+        <div id="concreteBar">
+            
+        </div>
     </body>
 </html>
