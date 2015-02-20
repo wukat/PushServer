@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,6 +42,16 @@ public class BarChooserServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        /* moze pomoc pozniej, gdzies indziej
+        Cookie[] cookies = request.getCookies();
+        String bar;
+        for(Cookie c : cookies) {
+            if ("bar".equals(c.getName())) {
+                bar = c.getValue();
+            }
+        }*/
+        
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType("application/json");
         try (PrintWriter out = response.getWriter()) {

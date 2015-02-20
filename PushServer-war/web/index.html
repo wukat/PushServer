@@ -14,30 +14,23 @@ and open the template in the editor.
                 $('#barChooser').click(function() {
                     $.post('BarChooserServlet', function(data) {
                         $('#bars').empty();
-                        $('#concreteBar').empty();
                         $('#bars').append('<h4>Wybierz bar</h4>');
                         for (var i in data.bars) {
-                            $('#bars').append('<input type="radio" name="groupOfBars" onchange="changeBar(this);" value="' + data.bars[i] + '">' + data.bars[i] + '<br>');
+                           $('#bars').append('<a id="' + data.bars[i] + '" href="bar.html" onclick="setBar(this); return true;">' + data.bars[i] + '</a><br>');
                         }
                     });
                 });
             });
-            function changeBar(radioButton) {
-                var bar = radioButton.value;
-                $.post('BarPublishSubscribeServlet', {myBar: bar}, function(data) {
-                    $('#concreteBar').empty();
-                    $('#concreteBar').append('<h1>' + bar + '</h1>');
-                    $('#concreteBar').append('<h2>Przygotuj drink:</h2>');
-                    for (var i in data.drinks) {
-                        $('#concreteBar').append('<button id="' + data.drinks[i] + '" onclick="createDrink(this);">' + data.drinks[i] + '</button>');
-                    }
-                    $('#concreteBar').append('<h2>Statystyki sprzedazy:</h2>');
-                });
+            function setBar(link) {
+                var bar = link.id;
+                setCookie("bar", bar, 1);
             }
-            function createDrink(button) {
-                var drink = button.value;
-                alert(drink);
-            }
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                var expires = "expires=" + d.toUTCString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            } 
         </script>
     </head>
     <body>
@@ -48,8 +41,5 @@ and open the template in the editor.
             
         </div>
         
-        <div id="concreteBar">
-            
-        </div>
     </body>
 </html>
