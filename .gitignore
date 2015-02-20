@@ -21,3 +21,4 @@ PushServer-war/dist/
 PushServer-war/build.xml
 PushServer-war/nbproject/private/
 */project.properties
+/PushServerEJB/nbproject/private/
