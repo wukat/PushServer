@@ -55,6 +55,8 @@ public class BarServlet extends HttpServlet {
             return;
         }
         
+        System.out.println("BBBBBBBBBBBBB");
+        
         try {
             InitialContext ctx  = new InitialContext();
 
@@ -62,13 +64,23 @@ public class BarServlet extends HttpServlet {
             //servlet which is stateless and shared between multiple concurrent clients.
             //Always look up a new instance
             bar =
-                (BarLocal) ctx.lookup("java:global/PushServer/PushServerEJB/" + request.getParameter("bar").replaceAll("\\s+",""));
+                (BarLocal) ctx.lookup("java:global/PushServer/PushServerEJB/LuxuryBar");// + request.getParameter("bar").replaceAll("\\s+",""));
+       
+        System.out.println("java:global/PushServer/PushServerEJB/" + request.getParameter("bar").replaceAll("\\s+",""));
+        
         } catch (Exception e) {
+            System.out.println("AAAAAAAAAAAAAAAAAA");
             System.out.println(e);
             return;
         }
         
         barman.setBar(bar);
+       System.out.println(bar.getBeers().getFirst());
+       
+       System.out.println(bar.makeBeer("jasne"));
+       
+        //bar.getDrinks();
+       // request.setAttribute("beers", bar.getBeers());
         
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/bar.jsp");
         dispatcher.include(request, response);

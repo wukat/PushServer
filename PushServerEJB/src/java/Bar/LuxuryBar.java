@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.ejb.DependsOn;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.naming.InitialContext;
@@ -23,19 +24,14 @@ import javax.naming.NamingException;
  * @author wukat
  */
 @Singleton
+@DependsOn("LuxuryAlcoholFactory")
 public class LuxuryBar extends BarLocal {
 
-    @EJB
     LuxuryAlcoholFactory alcoholFactory;
 
     @PostConstruct
     public void postConstruct() {
-        try {
-            InitialContext ctx = new InitialContext();
-            alcoholFactory = (LuxuryAlcoholFactory) ctx.lookup("java:global/PushServer/PushServerEJB/LuxuryAlcoholFactory");
-        } catch (NamingException ex) {
-            Logger.getLogger(LuxuryBar.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         products = new HashMap<>();
         products.put("LagerBeer", 15000);
         products.put("DarkBeer", 5000);
