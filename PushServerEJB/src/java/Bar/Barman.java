@@ -6,8 +6,8 @@
 
 package Bar;
 
-import java.util.concurrent.LinkedBlockingQueue;
 import javax.ejb.Stateful;
+import org.apache.commons.collections4.queue.CircularFifoQueue;
 
 /**
  *
@@ -17,8 +17,7 @@ import javax.ejb.Stateful;
 public class Barman implements BarmanLocal {
 
     private String barName;
-    private LinkedBlockingQueue events;
-    
+    private CircularFifoQueue<Order> events;
     
 //    public makeDrink()
     // Add business logic below. (Right-click in editor and choose
