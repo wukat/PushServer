@@ -10,6 +10,7 @@ import Factory.Beer;
 import Factory.Drink;
 import Factory.IngredientsGetter;
 import java.util.HashMap;
+import java.util.LinkedList;
 import javax.ejb.Local;
 
 /**
@@ -20,7 +21,17 @@ import javax.ejb.Local;
 public abstract class BarLocal {
 
     HashMap<String, Integer> products;
+    LinkedList<String> drinks;
+    LinkedList<String> beers;
 
+    public LinkedList<String> getBeers() {
+        return beers;
+    }
+
+    public LinkedList<String> getDrinks() {
+        return drinks;
+    }
+    
     protected Drink makeDrinkPr(String name, AlcoholFactory alcoholFactory) {
         Drink currentDrink = alcoholFactory.createDrink(name);
         if (!checkCreation(currentDrink)) {

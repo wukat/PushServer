@@ -14,6 +14,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface BarmanLocal {
-    public void setBarName(String barName);
-    public String getBarName();
+    public void setBar(BarLocal bar);
 }

@@ -9,6 +9,7 @@ import Factory.Beer;
 import Factory.Drink;
 import Factory.LuxuryAlcoholFactory;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -45,6 +46,14 @@ public class LuxuryBar extends BarLocal {
         products.put("Tabasco", 500);
         products.put("PineappleJuice", 1000);
         products.put("CoconutCream", 200);
+        
+        drinks = new LinkedList<>();
+        drinks.add("Bloody Mary");
+        drinks.add("Pina Colada");
+        
+        beers = new LinkedList<>();
+        beers.add("Jasne");
+        beers.add("Ciemne");
     }
     
     @Override
