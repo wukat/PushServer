@@ -8,7 +8,6 @@ package Bar;
 
 import Factory.Beer;
 import Factory.Drink;
-import Factory.IngredientsGetter;
 import Factory.PlebeianAlcoholFactory;
 import java.util.HashMap;
 import java.util.LinkedList;

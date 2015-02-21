@@ -61,9 +61,4 @@ public class LuxuryBar extends BarLocal {
     public Beer makeBeer(String name) {
         return makeBeerPr(name, alcoholFactory);
     }
-
-    
-    
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 }

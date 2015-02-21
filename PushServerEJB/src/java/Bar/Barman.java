@@ -17,7 +17,6 @@ import org.apache.commons.collections4.queue.CircularFifoQueue;
 @Stateful
 public class Barman implements BarmanLocal {
 
-//    @EJB
     private BarLocal bar;
     private CircularFifoQueue<Order> events;
     
