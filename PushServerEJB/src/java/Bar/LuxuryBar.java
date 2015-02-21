@@ -5,7 +5,6 @@
  */
 package Bar;
 
-import Factory.AlcoholFactory;
 import Factory.Beer;
 import Factory.Drink;
 import Factory.LuxuryAlcoholFactory;
@@ -23,9 +22,8 @@ import javax.naming.NamingException;
  * @author wukat
  */
 @Singleton
-public class LuxuryBar implements BarLocal {
+public class LuxuryBar extends BarLocal {
 
-    HashMap<String, Integer> products;
     @EJB
     LuxuryAlcoholFactory alcoholFactory;
 
@@ -51,12 +49,12 @@ public class LuxuryBar implements BarLocal {
     
     @Override
     public Drink makeDrink(String name) {
-        return alcoholFactory.createDrink(name);
+        return makeDrinkPr(name, alcoholFactory);
     }
 
     @Override
     public Beer makeBeer(String name) {
-        return alcoholFactory.createBeer(name);
+        return makeBeerPr(name, alcoholFactory);
     }
 
     

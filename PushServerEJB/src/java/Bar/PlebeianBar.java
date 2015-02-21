@@ -8,6 +8,7 @@ package Bar;
 
 import Factory.Beer;
 import Factory.Drink;
+import Factory.IngredientsGetter;
 import Factory.PlebeianAlcoholFactory;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -23,9 +24,8 @@ import javax.naming.NamingException;
  * @author wukat
  */
 @Singleton
-public class PlebeianBar implements BarLocal {
+public class PlebeianBar extends BarLocal {
 
-    HashMap<String, Integer> products;
     @EJB
     PlebeianAlcoholFactory alcoholFactory;
 
@@ -51,12 +51,12 @@ public class PlebeianBar implements BarLocal {
     
     @Override
     public Drink makeDrink(String name) {
-        return alcoholFactory.createDrink(name);
+        return makeDrinkPr(name, alcoholFactory);
     }
 
     @Override
     public Beer makeBeer(String name) {
-        return alcoholFactory.createBeer(name);
+        return makeBeerPr(name, alcoholFactory);
     }
 
     // Add business logic below. (Right-click in editor and choose
