@@ -6,40 +6,19 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>HTTP Polling</title>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-        <script type="text/javascript" src="http://jquery-json.googlecode.com/files/jquery.json-2.2.min.js"></script>
-        <script type="text/javascript">
-            jQuery(function($) {
-                $('#barChooser').click(function() {
-                    $.post('BarChooserServlet', function(data) {
-                        $('#bars').empty();
-                        $('#bars').append('<h4>Wybierz bar</h4>');
-                        for (var i in data.bars) {
-                           $('#bars').append('<a id="' + data.bars[i] + '" href="bar.html" onclick="setBar(this); return true;">' + data.bars[i] + '</a><br>');
-                        }
-                    });
-                });
-            });
-            function setBar(link) {
-                var bar = link.id;
-                setCookie("bar", bar, 1);
-            }
-            function setCookie(cname, cvalue, exdays) {
-                var d = new Date();
-                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-                var expires = "expires=" + d.toUTCString();
-                document.cookie = cname + "=" + cvalue + "; " + expires;
-            } 
-        </script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Wybor baru</title>
     </head>
     <body>
-        <h1>Witaj barmanie!</h1>
-        <button id="barChooser">Pokaz dostepne miejsca pracy</button>
-        
-        <div id="bars">
-            
-        </div>
-        
+        <form method="post" action="BarServlet">
+            <center>
+                <h2>Wybierz swoje miejsce pracy</h2> 
+                <select name="bar">
+                    <option value="Plebeian Bar">Plebeian Bar</option>
+                    <option value="Luxury Bar">Luxury Bar</option>
+                </select>
+                <p><input value="Rozpocznij prace" type="submit"></p>
+            </center>
+        </form>
     </body>
 </html>

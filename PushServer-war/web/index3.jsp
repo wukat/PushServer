@@ -6,14 +6,22 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
-<body>
-<form action="bar.jsp" method="POST" target="_blank">
-<input type="checkbox" name="maths" checked="checked" /> Maths
-<input type="checkbox" name="physics"  /> Physics
-<input type="checkbox" name="chemistry" checked="checked" /> 
-                                                Chemistry
-<input type="submit" value="Select Subject" />
-</form>
-</body>
+  <body>
+    <form method="post" action="BarServlet">
+      <center>
+
+        <h2>lol</h2> 
+
+              <select name="bar">
+                <option value="Plebeian Bar">Plebeian Bar</option>
+                <option value="Luxury Bar">Luxury Bar</option>
+              </select>
+
+        <p><input value="Rozpocznij prace" type="submit"></p>
+
+      </center>
+    </form>
+  </body>
 </html>

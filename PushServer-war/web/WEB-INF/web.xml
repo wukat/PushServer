@@ -8,6 +8,10 @@
         <servlet-name>BarPublishSubscribeServlet</servlet-name>
         <servlet-class>Servlets.BarPublishSubscribeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BarServlet</servlet-name>
+        <servlet-class>Servlets.BarServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BarChooserServlet</servlet-name>
         <url-pattern>/BarChooserServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>BarPublishSubscribeServlet</servlet-name>
         <url-pattern>/BarPublishSubscribeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BarServlet</servlet-name>
+        <url-pattern>/BarServlet</url-pattern>
     </servlet-mapping>
     <!--
     <session-config>
