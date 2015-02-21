@@ -13,8 +13,7 @@ import javax.ejb.Local;
  * @author wukat
  */
 @Local
-public interface DrinkFactory {
-    public abstract BloodyMary createBloodyMary();
-    public abstract Mojito createMojito();
-    public abstract PinaColada createPinaColada();
+public interface AlcoholFactory {
+    public abstract Drink createDrink(String name);
+    public abstract Beer createBeer(String name);
 }

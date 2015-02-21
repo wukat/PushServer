@@ -10,11 +10,11 @@ package Factory;
  *
  * @author krzysztof
  */
-public class CheapBloodyMary extends BloodyMary {
+public class PinaColadaCheap implements Drink {
 
     @Override
     public String getComposition() {
-        return "10ml wodki, 100ml soku pomidorowego, 20ml soku cytrynowego, tabasco";
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

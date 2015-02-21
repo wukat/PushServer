@@ -10,7 +10,7 @@ package Factory;
  *
  * @author krzysztof
  */
-public abstract class BloodyMary {
+public abstract class Drink {
     
     public abstract String getComposition();
     

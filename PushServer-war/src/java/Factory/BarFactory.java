@@ -11,7 +11,7 @@ package Factory;
  * @author krzysztof
  */
 public abstract class BarFactory {
-    public abstract BloodyMary createBloodyMary();
-    public abstract Mojito createMojito();
+    public abstract Drink createBloodyMary();
+    public abstract Beer createMojito();
     public abstract PinaColada createPinaColada();
 }

@@ -10,7 +10,7 @@ package Factory;
  *
  * @author krzysztof
  */
-public class ExpensiveBloodyMary extends BloodyMary {
+public class BloodyMary extends Drink {
     
     @Override
     public String getComposition() {

@@ -10,8 +10,11 @@ package Factory;
  *
  * @author krzysztof
  */
-public abstract class PinaColada {
-    
-    public abstract String getComposition();
+public class DarkBeerCheap implements Beer {
+
+    @Override
+    public String getComposition() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

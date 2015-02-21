@@ -10,7 +10,7 @@ package Factory;
  *
  * @author krzysztof
  */
-public abstract class BloodyMary {
+public interface Beer {
     
     public abstract String getComposition();
     

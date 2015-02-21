@@ -10,11 +10,11 @@ package Factory;
  *
  * @author krzysztof
  */
-public class CheapPinaColada extends PinaColada {
-    
+public class Water implements Drink, Beer {
+
     @Override
     public String getComposition() {
-        return "10ml rumu, 40ml smietanki kokosowej, 100ml soku ananasowego";
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

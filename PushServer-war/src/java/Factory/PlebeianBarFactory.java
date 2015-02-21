@@ -13,13 +13,13 @@ package Factory;
 public class PlebeianBarFactory extends BarFactory {
 
     @Override
-    public BloodyMary createBloodyMary() {
-        return new CheapBloodyMary();
+    public Drink createBloodyMary() {
+        return new LuxuryDrink();
     }
 
     @Override
-    public Mojito createMojito() {
-        return new CheapMojito();
+    public Beer createMojito() {
+        return new LuxuryBeer();
     }
 
     @Override

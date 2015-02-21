@@ -10,11 +10,11 @@ package Factory;
  *
  * @author krzysztof
  */
-public class ExpensiveMojito extends Mojito {
-    
+public class DarkBeerExpensive implements Beer {
+
     @Override
     public String getComposition() {
-        return "40ml rumu, limonka, cukier, mieta, 80ml wody";
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

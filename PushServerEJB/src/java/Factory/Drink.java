@@ -10,11 +10,8 @@ package Factory;
  *
  * @author krzysztof
  */
-public class CheapMojito extends Mojito {
-   
-    @Override
-    public String getComposition() {
-        return "10ml rumu, limonka, cukier, mieta, 110ml wody";
-    }
+public interface Drink {
+    
+    public abstract String getComposition();
     
 }
