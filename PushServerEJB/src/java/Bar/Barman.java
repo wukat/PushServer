@@ -24,8 +24,14 @@ public class Barman implements BarmanLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+    @Override
     public void setBarName(String barName) {
         this.barName = barName;
+    }
+
+    @Override
+    public String getBarName() {
+        return barName;
     }
     
 }
