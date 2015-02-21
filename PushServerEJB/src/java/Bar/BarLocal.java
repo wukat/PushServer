@@ -35,7 +35,7 @@ public abstract class BarLocal {
     protected Drink makeDrinkPr(String name, AlcoholFactory alcoholFactory) {
         Drink currentDrink = alcoholFactory.createDrink(name);
         if (!checkCreation(currentDrink)) {
-            currentDrink = alcoholFactory.createDrink("Water");
+            currentDrink = alcoholFactory.createDrink("Woda");
         }
         return currentDrink;
     }
@@ -45,7 +45,7 @@ public abstract class BarLocal {
     protected Beer makeBeerPr(String name, AlcoholFactory alcoholFactory) {
         Beer currentBeer = alcoholFactory.createBeer(name);
         if (!checkCreation(currentBeer)) {
-            currentBeer = alcoholFactory.createBeer("Water");
+            currentBeer = alcoholFactory.createBeer("Woda");
         }
         return currentBeer;
     }
