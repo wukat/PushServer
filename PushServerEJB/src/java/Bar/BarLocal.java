@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 
-package Barman;
+package Bar;
 
+import Factory.Beer;
+import Factory.Drink;
 import javax.ejb.Local;
 
 /**
@@ -13,6 +15,8 @@ import javax.ejb.Local;
  * @author wukat
  */
 @Local
-public interface BarmanLocal {
-    
+public interface BarLocal {
+        public Drink makeDrink(String name);
+
+    public Beer makeBeer(String name);
 }

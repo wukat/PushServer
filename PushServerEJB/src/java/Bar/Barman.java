@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Barman;
+package Bar;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import javax.ejb.Stateful;
