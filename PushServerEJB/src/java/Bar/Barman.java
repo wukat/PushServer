@@ -23,19 +23,8 @@ public class Barman implements BarmanLocal {
     private CircularFifoQueue<Order> events;
     
     @Override
-    public void setBar(String bar) {
-        try {
-            InitialContext ctx  = new InitialContext();
-
-            //Barman is a stateful bean and therefore can not be injected into
-            //servlet which is stateless and shared between multiple concurrent clients.
-            //Always look up a new instance
-            this.bar =
-                (BarLocal) ctx.lookup("java:global/PushServer/PushServerEJB/Barman");
-        } catch (Exception e) {
-            System.out.println(e);
-            return;
-        }
+    public void setBar(BarLocal bar) {
+        this.bar = bar;
     }    
     
     
