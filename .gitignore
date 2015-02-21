@@ -19,6 +19,6 @@ PushServer-ejb/nbproject/private/
 PushServer-war/build/
 PushServer-war/dist/
 PushServer-war/build.xml
-PushServer-war/nbproject/nbproject/
-PushServerEJB/nbproject/nbproject/
-PushServer-ejb/nbproject/nbproject/
+PushServer-war/nbproject/
+PushServerEJB/nbproject/
+PushServer-ejb/nbproject/
