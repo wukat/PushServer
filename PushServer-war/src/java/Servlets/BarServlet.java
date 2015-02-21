@@ -6,8 +6,13 @@
 
 package Servlets;
 
+import Bar.Barman;
+import Bar.BarmanLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.naming.InitialContext;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +36,24 @@ public class BarServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        BarmanLocal barman; 
+        
         response.setContentType("text/html;charset=UTF-8");
+        
+        try {
+            InitialContext ctx  = new InitialContext();
+
+            //Barman is a stateful bean and therefore can not be injected into
+            //servlet which is stateless and shared between multiple concurrent clients.
+            //Always look up a new instance
+            barman =
+                (BarmanLocal) ctx.lookup("java:global/PushServer/PushServerEJB/Barman");
+        } catch (Exception e) {
+            System.out.println(e);
+            return;
+        }
+        
+        barman.setBarName(request.getParameter("bar"));
         
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/bar.jsp");
         dispatcher.include(request, response);
