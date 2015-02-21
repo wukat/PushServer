@@ -10,8 +10,6 @@ package Factory;
  *
  * @author krzysztof
  */
-public interface Beer {
-    
-    public abstract String getComposition();
+public interface Beer extends IngredientsGetter {
     
 }

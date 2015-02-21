@@ -6,6 +6,8 @@
 
 package Factory;
 
+import java.util.HashMap;
+
 /**
  *
  * @author krzysztof
@@ -13,7 +15,7 @@ package Factory;
 public class DarkBeerExpensive implements Beer {
 
     @Override
-    public String getComposition() {
+    public HashMap<String, Integer> getIngredients() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

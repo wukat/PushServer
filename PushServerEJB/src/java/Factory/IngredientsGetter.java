@@ -12,11 +12,6 @@ import java.util.HashMap;
  *
  * @author krzysztof
  */
-public class LagerBeerCheap implements Beer {
-
-    @Override
-    public HashMap<String, Integer> getIngredients() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+public interface IngredientsGetter {
+    public HashMap<String, Integer> getIngredients();
 }
