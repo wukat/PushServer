@@ -23,4 +23,9 @@ public class Barman implements BarmanLocal {
 //    public makeDrink()
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    public void setBarName(String barName) {
+        this.barName = barName;
+    }
+    
 }
