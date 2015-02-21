@@ -62,7 +62,7 @@ public class BarServlet extends HttpServlet {
             //servlet which is stateless and shared between multiple concurrent clients.
             //Always look up a new instance
             bar =
-                (BarLocal) ctx.lookup("COSTAM!!!!");//request.getParameter("bar")
+                (BarLocal) ctx.lookup("java:global/PushServer/PushServerEJB/" + request.getParameter("bar").replaceAll("\\s+",""));
         } catch (Exception e) {
             System.out.println(e);
             return;
