@@ -8,7 +8,6 @@ package Bar;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
-import javax.naming.InitialContext;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 
 /**
@@ -18,7 +17,7 @@ import org.apache.commons.collections4.queue.CircularFifoQueue;
 @Stateful
 public class Barman implements BarmanLocal {
 
-    @EJB
+//    @EJB
     private BarLocal bar;
     private CircularFifoQueue<Order> events;
     
