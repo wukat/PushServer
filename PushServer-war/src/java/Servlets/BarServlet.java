@@ -53,7 +53,7 @@ public class BarServlet extends HttpServlet {
             return;
         }
         
-        barman.setBarName(request.getParameter("bar"));
+        barman.setBar(request.getParameter("bar"));
         
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/bar.jsp");
         dispatcher.include(request, response);

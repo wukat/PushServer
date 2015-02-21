@@ -17,15 +17,16 @@
             <h1>Witaj w <%= (String) request.getParameter("bar") %>!</h1>
             
             <h2>Przygotuj napoj:</h2>
-            
-            <div id="drinks">
-                
-            </div>
-            
+
+            <h3>Piwa:</h3>
             <div id="beers">
                 
             </div>
             
+            <h3>Drinki:</h3>
+            <div id="drinks">
+                
+            </div>
             
         </center>
     </body>
