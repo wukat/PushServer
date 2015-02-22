@@ -38,7 +38,6 @@ public class LuxuryBar extends BarLocal {
 
     @PostConstruct
     public void postConstruct() {
-        System.out.println("PPPPPPPPPPPPPPPPPPPPPPPPPPP");
         products = new HashMap<>();
         products.put("LagerBeer", 15000);
         products.put("DarkBeer", 5000);

@@ -6,7 +6,6 @@
 
 package Bar;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 
@@ -24,6 +23,4 @@ public class Barman implements BarmanLocal {
     public void setBar(BarLocal bar) {
         this.bar = bar;
     }    
-    
-    
 }

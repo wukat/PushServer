@@ -6,37 +6,29 @@
 
 package Bar;
 
+import Factory.AlcoholFactory;
 import Factory.Beer;
 import Factory.Drink;
-import Factory.PlebeianAlcoholFactory;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.ejb.DependsOn;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
 /**
  *
  * @author wukat
  */
 @Singleton
+@DependsOn("PlebeianAlcoholFactory")
 public class PlebeianBar extends BarLocal {
 
-    @EJB
-    PlebeianAlcoholFactory alcoholFactory;
+    @EJB(beanName = "PlebaianAlcoholFactory")
+    AlcoholFactory alcoholFactory;
 
     @PostConstruct
     public void postConstruct() {
-//        try {
-//            InitialContext ctx = new InitialContext();
-//            alcoholFactory = (PlebeianAlcoholFactory) ctx.lookup("java:global/PushServer/PushServerEJB/LuxuryAlcoholFactory");
-//        } catch (NamingException ex) {
-//            Logger.getLogger(LuxuryBar.class.getName()).log(Level.SEVERE, null, ex);
-//        }
         products = new HashMap<>();
         products.put("LagerBeer", 10000);
         products.put("DarkBeer", 5000);
