@@ -6,9 +6,13 @@
 
 package Servlets;
 
+import Bar.BarLocal;
+import Bar.BarmanLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,21 +38,35 @@ public class AlcoholMakerServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        //response.setContentType("text/html;charset=UTF-8");
         
+        BarmanLocal barman;
         String barName = request.getParameter("bar");
         String alcohol = request.getParameter("alcohol");
         String alcoholType = request.getParameter("alcoholType");
+         
         
         System.out.println(barName + " " + alcohol + " " + alcoholType);
         
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType("application/json");
-        LinkedList<String> costam = new LinkedList<String>();
-        costam.add("Data 02.02.0002: Drink jakistam");
-        costam.add("Data 02.02.0002: Drink jakistam222");
+        LinkedList<String> events = new LinkedList<>();
+        //costam.add("Data 02.02.0002: Drink jakistam");
+        //costam.add("Data 02.02.0002: Drink jakistam222");
+
+        //response.setContentType("text/html;charset=UTF-8");
+        
+        try {
+            InitialContext ctx  = new InitialContext();
+            barman = (BarmanLocal) ctx.lookup("java:global/PushServer/PushServerEJB/Barman");
+            events = barman.placeOrder(alcoholType, alcohol);
+        } catch (NamingException e) {
+            System.out.println(e);
+            return;
+        }
+        
         try (PrintWriter out = response.getWriter()) {
-            out.write(new JSONObject().put("events", new JSONArray(costam)).toString());
+            out.write(new JSONObject().put("events", new JSONArray(events)).toString());
         } catch (JSONException e) {
             throw new ServletException(e.getMessage(), e);
         }
