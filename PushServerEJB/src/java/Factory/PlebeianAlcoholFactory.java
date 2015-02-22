@@ -6,6 +6,13 @@
 
 package Factory;
 
+import Alcohols.Beer;
+import Alcohols.LagerBeerCheap;
+import Alcohols.Water;
+import Alcohols.Drink;
+import Alcohols.PinaColadaCheap;
+import Alcohols.BloodyMaryCheap;
+import Alcohols.DarkBeerCheap;
 import javax.ejb.Singleton;
 
 /**

@@ -7,8 +7,8 @@
 package Bar;
 
 import Factory.AlcoholFactory;
-import Factory.Beer;
-import Factory.Drink;
+import Alcohols.Beer;
+import Alcohols.Drink;
 import java.util.HashMap;
 import java.util.LinkedList;
 import javax.annotation.PostConstruct;

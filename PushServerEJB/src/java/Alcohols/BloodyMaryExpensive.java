@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Factory;
+package Alcohols;
 
 import java.util.HashMap;
 
@@ -12,7 +12,7 @@ import java.util.HashMap;
  *
  * @author krzysztof
  */
-public class BloodyMaryCheap implements Drink {
+public class BloodyMaryExpensive implements Drink {
 
     @Override
     public HashMap<String, Integer> getIngredients() {

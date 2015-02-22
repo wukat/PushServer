@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Factory;
+package Alcohols;
 
 import java.util.HashMap;
 

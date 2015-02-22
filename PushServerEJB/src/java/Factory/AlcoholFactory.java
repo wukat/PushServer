@@ -6,6 +6,8 @@
 
 package Factory;
 
+import Alcohols.Beer;
+import Alcohols.Drink;
 import javax.ejb.Local;
 
 /**

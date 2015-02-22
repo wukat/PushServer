@@ -6,8 +6,8 @@
 package Bar;
 
 import Factory.AlcoholFactory;
-import Factory.Beer;
-import Factory.Drink;
+import Alcohols.Beer;
+import Alcohols.Drink;
 import Factory.LuxuryAlcoholFactory;
 import Factory.PlebeianAlcoholFactory;
 import java.util.HashMap;
