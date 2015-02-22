@@ -31,12 +31,12 @@ public class PlebeianBar extends BarLocal {
 
     @PostConstruct
     public void postConstruct() {
-        try {
-            InitialContext ctx = new InitialContext();
-            alcoholFactory = (PlebeianAlcoholFactory) ctx.lookup("java:global/PushServer/PushServerEJB/LuxuryAlcoholFactory");
-        } catch (NamingException ex) {
-            Logger.getLogger(LuxuryBar.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            InitialContext ctx = new InitialContext();
+//            alcoholFactory = (PlebeianAlcoholFactory) ctx.lookup("java:global/PushServer/PushServerEJB/LuxuryAlcoholFactory");
+//        } catch (NamingException ex) {
+//            Logger.getLogger(LuxuryBar.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         products = new HashMap<>();
         products.put("LagerBeer", 10000);
         products.put("DarkBeer", 5000);

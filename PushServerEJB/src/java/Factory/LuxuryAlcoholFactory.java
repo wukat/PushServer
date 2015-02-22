@@ -6,6 +6,7 @@
 
 package Factory;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 
 /**
@@ -14,6 +15,11 @@ import javax.ejb.Singleton;
  */
 @Singleton
 public class LuxuryAlcoholFactory implements AlcoholFactory {
+    
+    @PostConstruct
+    public void po() {
+        System.out.println("??????????????????????????????");
+    }
     
     @Override
     public Drink createDrink(String name) {

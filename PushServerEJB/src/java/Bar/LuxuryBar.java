@@ -5,17 +5,23 @@
  */
 package Bar;
 
+import Factory.AlcoholFactory;
 import Factory.Beer;
 import Factory.Drink;
 import Factory.LuxuryAlcoholFactory;
+import Factory.PlebeianAlcoholFactory;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.ejb.DependsOn;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
+import javax.ejb.Startup;
+import javax.ejb.Stateful;
+import javax.inject.Inject;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -27,11 +33,12 @@ import javax.naming.NamingException;
 @DependsOn("LuxuryAlcoholFactory")
 public class LuxuryBar extends BarLocal {
 
-    LuxuryAlcoholFactory alcoholFactory;
+    @EJB(beanName = "LuxuryAlcoholFactory")
+    AlcoholFactory alcoholFactory;
 
     @PostConstruct
     public void postConstruct() {
-        
+        System.out.println("PPPPPPPPPPPPPPPPPPPPPPPPPPP");
         products = new HashMap<>();
         products.put("LagerBeer", 15000);
         products.put("DarkBeer", 5000);

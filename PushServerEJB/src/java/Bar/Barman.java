@@ -14,7 +14,7 @@ import org.apache.commons.collections4.queue.CircularFifoQueue;
  *
  * @author wukat
  */
-@Stateful
+@Stateful(name="Barman")
 public class Barman implements BarmanLocal {
 
     private BarLocal bar;
