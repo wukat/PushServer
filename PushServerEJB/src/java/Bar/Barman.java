@@ -6,6 +6,8 @@
 
 package Bar;
 
+import java.util.HashMap;
+import java.util.LinkedList;
 import javax.ejb.Stateful;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 
@@ -23,4 +25,24 @@ public class Barman implements BarmanLocal {
     public void setBar(BarLocal bar) {
         this.bar = bar;
     }    
+    
+    @Override
+    public LinkedList<String> placeOrder(String kind, String productName) {
+        switch (kind)  {
+            case "Drink":
+                return listOfIngredients(bar.makeDrink(productName).getIngredients());
+            case "Beer":
+                return listOfIngredients(bar.makeBeer(productName).getIngredients());
+            default:
+                return new LinkedList<>();
+        }
+    }
+    
+    private LinkedList<String> listOfIngredients(HashMap<String, Integer> ingredients) {
+        LinkedList<String> result = new LinkedList<>();
+        for (String product : ingredients.keySet()) {
+            result.add(product + " " + ingredients.get(product).toString() + "\n");
+        }
+        return result;
+    }
 }
