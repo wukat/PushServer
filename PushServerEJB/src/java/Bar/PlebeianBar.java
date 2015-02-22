@@ -24,7 +24,7 @@ import javax.ejb.Singleton;
 @DependsOn("PlebeianAlcoholFactory")
 public class PlebeianBar extends BarAbstract implements BarLocal {
 
-    @EJB(beanName = "PlebaianAlcoholFactory")
+    @EJB(beanName = "PlebeianAlcoholFactory")
     AlcoholFactory alcoholFactory;
 
     @PostConstruct
