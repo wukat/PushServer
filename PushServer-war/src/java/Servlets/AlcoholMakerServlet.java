@@ -6,15 +6,8 @@
 
 package Servlets;
 
-import Bar.BarLocal;
-import Bar.Barman;
-import Bar.BarmanLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import javax.naming.InitialContext;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author krzysztof
  */
-public class BarServlet extends HttpServlet {
+public class AlcoholMakerServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,55 +30,25 @@ public class BarServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        BarmanLocal barman; 
-        BarLocal bar;
-        
         response.setContentType("text/html;charset=UTF-8");
         
-        try {
-            InitialContext ctx  = new InitialContext();
-
-            //Barman is a stateful bean and therefore can not be injected into
-            //servlet which is stateless and shared between multiple concurrent clients.
-            //Always look up a new instance
-            barman =
-                (BarmanLocal) ctx.lookup("java:global/PushServer/PushServerEJB/Barman");
-        } catch (Exception e) {
-            System.out.println(e);
-            return;
+        String barName = request.getParameter("bar");
+        String alcohol = request.getParameter("alcohol");
+        
+        System.out.println(barName + alcohol);
+        
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AlcoholMakerServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AlcoholMakerServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-        
-        System.out.println("BBBBBBBBBBBBB");
-        
-        try {
-            InitialContext ctx  = new InitialContext();
-
-            //Barman is a stateful bean and therefore can not be injected into
-            //servlet which is stateless and shared between multiple concurrent clients.
-            //Always look up a new instance
-            bar =
-                (BarLocal) ctx.lookup("java:global/PushServer/PushServerEJB/LuxuryBar");// + request.getParameter("bar").replaceAll("\\s+",""));
-       
-        System.out.println("java:global/PushServer/PushServerEJB/" + request.getParameter("bar").replaceAll("\\s+",""));
-        
-        } catch (Exception e) {
-            System.out.println("AAAAAAAAAAAAAAAAAA");
-            System.out.println(e);
-            return;
-        }
-        
-        barman.setBar(bar);
-    //   System.out.println(bar.getBeers().getFirst());
-       
-    //   System.out.println(bar.makeBeer("Jasne"));
-       
-        //bar.getDrinks();
-        request.setAttribute("beers", bar.getBeers());
-        request.setAttribute("drinks", bar.getDrinks());
-        
-                
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/bar.jsp");
-        dispatcher.include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

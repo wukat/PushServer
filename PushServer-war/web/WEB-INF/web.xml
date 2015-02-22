@@ -12,6 +12,10 @@
         <servlet-name>BarServlet</servlet-name>
         <servlet-class>Servlets.BarServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlcoholMakerServlet</servlet-name>
+        <servlet-class>Servlets.AlcoholMakerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BarChooserServlet</servlet-name>
         <url-pattern>/BarChooserServlet</url-pattern>
@@ -31,4 +35,8 @@
         </session-timeout>
     </session-config>
     -->
+    <servlet-mapping>
+        <servlet-name>AlcoholMakerServlet</servlet-name>
+        <url-pattern>/AlcoholMakerServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
