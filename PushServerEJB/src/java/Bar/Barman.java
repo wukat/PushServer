@@ -16,11 +16,11 @@ import org.apache.commons.collections4.queue.CircularFifoQueue;
 @Stateful(name="Barman")
 public class Barman implements BarmanLocal {
 
-    private BarAbstract bar;
+    private BarLocal bar;
     private CircularFifoQueue<Order> events;
     
     @Override
-    public void setBar(BarAbstract bar) {
+    public void setBar(BarLocal bar) {
         this.bar = bar;
     }    
 }
