@@ -29,9 +29,9 @@ public class Barman implements BarmanLocal {
     @Override
     public LinkedList<String> placeOrder(String kind, String productName) {
         switch (kind)  {
-            case "Drink":
+            case "drink":
                 return listOfIngredients(bar.makeDrink(productName).getIngredients());
-            case "Beer":
+            case "beer":
                 return listOfIngredients(bar.makeBeer(productName).getIngredients());
             default:
                 return new LinkedList<>();
