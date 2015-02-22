@@ -6,7 +6,7 @@
 
 package Servlets;
 
-import Bar.BarLocal;
+import Bar.BarAbstract;
 import Bar.Barman;
 import Bar.BarmanLocal;
 import java.io.IOException;
@@ -38,7 +38,7 @@ public class BarServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         BarmanLocal barman; 
-        BarLocal bar;
+        BarAbstract bar;
         
         response.setContentType("text/html;charset=UTF-8");
         
@@ -64,7 +64,7 @@ public class BarServlet extends HttpServlet {
             //servlet which is stateless and shared between multiple concurrent clients.
             //Always look up a new instance
             bar =
-                (BarLocal) ctx.lookup("java:global/PushServer/PushServerEJB/LuxuryBar");// + request.getParameter("bar").replaceAll("\\s+",""));
+                (BarAbstract) ctx.lookup("java:global/PushServer/PushServerEJB/LuxuryBar");// + request.getParameter("bar").replaceAll("\\s+",""));
        
         System.out.println("java:global/PushServer/PushServerEJB/" + request.getParameter("bar").replaceAll("\\s+",""));
         

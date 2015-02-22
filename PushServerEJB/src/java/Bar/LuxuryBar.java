@@ -31,7 +31,7 @@ import javax.naming.NamingException;
  */
 @Singleton
 @DependsOn("LuxuryAlcoholFactory")
-public class LuxuryBar extends BarLocal {
+public class LuxuryBar extends BarAbstract implements BarLocal {
 
     @EJB(beanName = "LuxuryAlcoholFactory")
     AlcoholFactory alcoholFactory;

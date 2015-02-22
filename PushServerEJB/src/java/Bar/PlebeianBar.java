@@ -22,7 +22,7 @@ import javax.ejb.Singleton;
  */
 @Singleton
 @DependsOn("PlebeianAlcoholFactory")
-public class PlebeianBar extends BarLocal {
+public class PlebeianBar extends BarAbstract implements BarLocal {
 
     @EJB(beanName = "PlebaianAlcoholFactory")
     AlcoholFactory alcoholFactory;
