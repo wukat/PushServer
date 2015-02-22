@@ -6,12 +6,13 @@
 
 package Alcohols;
 
+import Consts.MagicStrings;
 import Factory.IngredientsGetter;
 
 /**
  *
  * @author krzysztof
  */
-public interface Drink extends IngredientsGetter {
+public interface Drink extends IngredientsGetter, MagicStrings {
     
 }

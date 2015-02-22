@@ -18,10 +18,10 @@ public class BloodyMaryCheap implements Drink {
     
     public BloodyMaryCheap() {
         ingredients = new HashMap();
-        ingredients.put("Vodka", 40);
-        ingredients.put("Water", 100);
-        ingredients.put("TomatoJuice", 130);
-        ingredients.put("Tabasco", 10);
+        ingredients.put(vodka, 40);
+        ingredients.put(water, 100);
+        ingredients.put(tomatoJuice, 130);
+        ingredients.put(tabasco, 10);
     }
     
     @Override

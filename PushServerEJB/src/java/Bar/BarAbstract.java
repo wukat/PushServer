@@ -11,7 +11,6 @@ import Alcohols.Drink;
 import Factory.IngredientsGetter;
 import java.util.HashMap;
 import java.util.LinkedList;
-import javax.ejb.Local;
 
 /**
  *
@@ -36,7 +35,7 @@ public abstract class BarAbstract implements BarLocal {
     protected Drink makeDrinkPr(String name, AlcoholFactory alcoholFactory) {
         Drink currentDrink = alcoholFactory.createDrink(name);
         if (!checkCreation(currentDrink)) {
-            currentDrink = alcoholFactory.createDrink("Woda");
+            currentDrink = alcoholFactory.createDrink(water);
         }
         return currentDrink;
     }
@@ -47,7 +46,7 @@ public abstract class BarAbstract implements BarLocal {
     protected Beer makeBeerPr(String name, AlcoholFactory alcoholFactory) {
         Beer currentBeer = alcoholFactory.createBeer(name);
         if (!checkCreation(currentBeer)) {
-            currentBeer = alcoholFactory.createBeer("Woda");
+            currentBeer = alcoholFactory.createBeer(water);
         }
         return currentBeer;
     }

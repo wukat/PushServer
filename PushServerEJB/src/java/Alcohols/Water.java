@@ -6,19 +6,20 @@
 
 package Alcohols;
 
+import Consts.MagicStrings;
 import java.util.HashMap;
 
 /**
  *
  * @author krzysztof
  */
-public class Water implements Drink, Beer {
+public class Water implements Drink, Beer, MagicStrings {
 
     private final HashMap<String, Integer> ingredients;
     
     public Water() {
         ingredients = new HashMap();
-        ingredients.put("Water", 200);
+        ingredients.put(water, 200);
     }
     
     @Override

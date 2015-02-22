@@ -39,23 +39,23 @@ public class LuxuryBar extends BarAbstract implements BarLocal {
     @PostConstruct
     public void postConstruct() {
         products = new HashMap<>();
-        products.put("LagerBeer", 15000);
-        products.put("DarkBeer", 5000);
-        products.put("Water", 100000);
-        products.put("Vodka", 1000);
-        products.put("Rum", 1000);
-        products.put("TomatoJuice", 2000);
-        products.put("Tabasco", 500);
-        products.put("PineappleJuice", 1000);
-        products.put("CoconutCream", 200);
+        products.put(lagerBeer, 15000);
+        products.put(darkBeer, 5000);
+        products.put(water, 100000);
+        products.put(vodka, 1000);
+        products.put(rum, 1000);
+        products.put(tomatoJuice, 2000);
+        products.put(tabasco, 500);
+        products.put(pineappleJuice, 1000);
+        products.put(coconutCream, 200);
         
         drinks = new LinkedList<>();
-        drinks.add("Bloody Mary");
-        drinks.add("Pina Colada");
+        drinks.add(bloodyMary);
+        drinks.add(pinaColada);
         
         beers = new LinkedList<>();
-        beers.add("Jasne");
-        beers.add("Ciemne");
+        beers.add(lagerBeer);
+        beers.add(darkBeer);
     }
     
     @Override

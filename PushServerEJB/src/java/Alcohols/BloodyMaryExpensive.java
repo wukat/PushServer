@@ -18,9 +18,9 @@ public class BloodyMaryExpensive implements Drink {
     
     public BloodyMaryExpensive() {
         ingredients = new HashMap();
-        ingredients.put("Vodka", 90);
-        ingredients.put("TomatoJuice", 180);
-        ingredients.put("Tabasco", 10);
+        ingredients.put(vodka, 90);
+        ingredients.put(tomatoJuice, 180);
+        ingredients.put(tabasco, 10);
     }
     
     @Override

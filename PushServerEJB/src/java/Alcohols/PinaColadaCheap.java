@@ -18,10 +18,10 @@ public class PinaColadaCheap implements Drink {
     
     public PinaColadaCheap() {
         ingredients = new HashMap();
-        ingredients.put("Rum", 10);
-        ingredients.put("CoconutCream", 10);
-        ingredients.put("PineappleJuice", 70);
-        ingredients.put("Water", 60);
+        ingredients.put(rum, 10);
+        ingredients.put(coconutCream, 10);
+        ingredients.put(pineappleJuice, 70);
+        ingredients.put(water, 60);
     }
     
     @Override

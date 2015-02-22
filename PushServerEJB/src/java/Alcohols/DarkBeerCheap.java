@@ -18,8 +18,8 @@ public class DarkBeerCheap implements Beer {
     
     public DarkBeerCheap() {
         ingredients = new HashMap();
-        ingredients.put("DarkBeer", 400);
-        ingredients.put("Water", 100);
+        ingredients.put(darkBeer, 400);
+        ingredients.put(water, 100);
     }
     
     @Override

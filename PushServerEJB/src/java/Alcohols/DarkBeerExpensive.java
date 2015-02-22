@@ -18,7 +18,7 @@ public class DarkBeerExpensive implements Beer {
     
     public DarkBeerExpensive() {
         ingredients = new HashMap();
-        ingredients.put("DarkBeer", 500);
+        ingredients.put(darkBeer, 500);
     }
     
     @Override

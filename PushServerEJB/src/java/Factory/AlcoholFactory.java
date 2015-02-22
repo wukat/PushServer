@@ -8,6 +8,7 @@ package Factory;
 
 import Alcohols.Beer;
 import Alcohols.Drink;
+import Consts.MagicStrings;
 import javax.ejb.Local;
 
 /**
@@ -15,7 +16,7 @@ import javax.ejb.Local;
  * @author wukat
  */
 @Local
-public interface AlcoholFactory {
+public interface AlcoholFactory extends MagicStrings {
     public abstract Drink createDrink(String name);
     public abstract Beer createBeer(String name);
 }

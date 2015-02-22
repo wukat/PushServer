@@ -18,9 +18,9 @@ public class PinaColadaExpensive implements Drink {
     
     public PinaColadaExpensive() {
         ingredients = new HashMap();
-        ingredients.put("Rum", 30);
-        ingredients.put("CoconutCream", 30);
-        ingredients.put("PineappleJuice", 90);
+        ingredients.put(rum, 30);
+        ingredients.put(coconutCream, 30);
+        ingredients.put(pineappleJuice, 90);
     }
     
     @Override
