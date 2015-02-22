@@ -15,6 +15,7 @@ import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,46 +46,27 @@ public class BarServlet extends HttpServlet {
         
         try {
             InitialContext ctx  = new InitialContext();
-
-            //Barman is a stateful bean and therefore can not be injected into
-            //servlet which is stateless and shared between multiple concurrent clients.
-            //Always look up a new instance
-            barman =
-                (BarmanLocal) ctx.lookup("java:global/PushServer/PushServerEJB/Barman");
-        } catch (Exception e) {
+            barman = (BarmanLocal) ctx.lookup("java:global/PushServer/PushServerEJB/Barman");
+        } catch (NamingException e) {
             System.out.println(e);
             return;
         }
         
-        System.out.println("BBBBBBBBBBBBB");
-        
         try {
             InitialContext ctx  = new InitialContext();
-
-            //Barman is a stateful bean and therefore can not be injected into
-            //servlet which is stateless and shared between multiple concurrent clients.
-            //Always look up a new instance
-            bar =
-                (BarLocal) ctx.lookup("java:global/PushServer/PushServerEJB/LuxuryBar");// + request.getParameter("bar").replaceAll("\\s+",""));
-       
-        System.out.println("java:global/PushServer/PushServerEJB/" + request.getParameter("bar").replaceAll("\\s+",""));
-        
-        } catch (Exception e) {
-            System.out.println("AAAAAAAAAAAAAAAAAA");
+            bar = (BarLocal) ctx.lookup("java:global/PushServer/PushServerEJB/" + request.getParameter("bar").replaceAll("\\s+",""));
+        } catch (NamingException e) {
             System.out.println(e);
             return;
         }
         
         barman.setBar(bar);
-    //   System.out.println(bar.getBeers().getFirst());
        
-    //   System.out.println(bar.makeBeer("Jasne"));
+        // System.out.println(bar.makeBeer("Jasne"));
        
-        //bar.getDrinks();
         request.setAttribute("beers", bar.getBeers());
         request.setAttribute("drinks", bar.getDrinks());
         
-                
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/bar.jsp");
         dispatcher.include(request, response);
     }

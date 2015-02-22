@@ -15,10 +15,10 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <script type="text/javascript" src="http://jquery-json.googlecode.com/files/jquery.json-2.2.min.js"></script>
         <script type="text/javascript">
-            function createAlcohol(button) {
+            function createAlcohol(button, alcoholType) {
                 var bar = document.getElementById('welcome').getAttribute('title');
                 var alcohol = button.value;
-                $.post('AlcoholMakerServlet', {bar: bar, alcohol: alcohol}, function(data) {
+                $.post('AlcoholMakerServlet', {bar: bar, alcohol: alcohol, alcoholType: alcoholType}, function(data) {
                     
                 });
             }
@@ -37,7 +37,7 @@
                     Iterator<String> it = beerNames.iterator();
                     while(it.hasNext()) {
                         String paramName = it.next();
-                        out.println("<button id=\"" + paramName + "\" value=\"" + paramName + "\" onclick=\"createAlcohol(this);\">" + paramName + "</button><br>");
+                        out.println("<button id=\"" + paramName + "\" value=\"" + paramName + "\" onclick=\"createAlcohol(this, 'beer');\">" + paramName + "</button><br>");
                     }
                 %>      
             </div>
@@ -49,7 +49,7 @@
                     Iterator<String> iter = drinkNames.iterator();
                     while(iter.hasNext()) {
                         String paramName = iter.next();
-                        out.println("<button id=\"" + paramName + "\" value=\"" + paramName + "\" onclick=\"createAlcohol(this);\">" + paramName + "</button><br>");
+                        out.println("<button id=\"" + paramName + "\" value=\"" + paramName + "\" onclick=\"createAlcohol(this, 'drink');\">" + paramName + "</button><br>");
                     }
                 %>
             </div>

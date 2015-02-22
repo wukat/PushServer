@@ -34,8 +34,9 @@ public class AlcoholMakerServlet extends HttpServlet {
         
         String barName = request.getParameter("bar");
         String alcohol = request.getParameter("alcohol");
+        String alcoholType = request.getParameter("alcoholType");
         
-        System.out.println(barName + alcohol);
+        System.out.println(barName + " " + alcohol + " " + alcoholType);
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
