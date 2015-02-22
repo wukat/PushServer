@@ -19,7 +19,10 @@
                 var bar = document.getElementById('welcome').getAttribute('title');
                 var alcohol = button.value;
                 $.post('AlcoholMakerServlet', {bar: bar, alcohol: alcohol, alcoholType: alcoholType}, function(data) {
-                    
+                    var events = data.events;
+                    for (var i in events) {
+                        $('#statistics').append('<span>' + events[i] + '</span><br>');
+                    }
                 });
             }
         </script>
@@ -55,7 +58,7 @@
             </div>
             
             <h3>Statystyki sprzedazy:</h3>
-            <div id="statistics">
+            <div id="statistics" style="font-family: monospace;">
                 
             </div>
             

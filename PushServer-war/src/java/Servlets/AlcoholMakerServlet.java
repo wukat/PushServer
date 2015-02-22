@@ -8,10 +8,14 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 /**
  *
@@ -38,18 +42,17 @@ public class AlcoholMakerServlet extends HttpServlet {
         
         System.out.println(barName + " " + alcohol + " " + alcoholType);
         
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.setContentType("application/json");
+        LinkedList<String> costam = new LinkedList<String>();
+        costam.add("Data 02.02.0002: Drink jakistam");
+        costam.add("Data 02.02.0002: Drink jakistam222");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AlcoholMakerServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AlcoholMakerServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            out.write(new JSONObject().put("events", new JSONArray(costam)).toString());
+        } catch (JSONException e) {
+            throw new ServletException(e.getMessage(), e);
         }
+        response.getWriter().flush();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
