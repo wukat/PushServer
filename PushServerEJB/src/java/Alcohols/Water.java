@@ -14,9 +14,16 @@ import java.util.HashMap;
  */
 public class Water implements Drink, Beer {
 
+    private final HashMap<String, Integer> ingredients;
+    
+    public Water() {
+        ingredients = new HashMap();
+        ingredients.put("Water", 200);
+    }
+    
     @Override
     public HashMap<String, Integer> getIngredients() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ingredients;
     }
     
 }
