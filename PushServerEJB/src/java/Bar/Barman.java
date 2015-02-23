@@ -34,8 +34,12 @@ public class Barman implements BarmanLocal, Serializable, MagicStrings {
     private final CircularFifoQueue<Order> orders = new CircularFifoQueue<>(5);
     
     @Override
-    public CircularFifoQueue<Order> getOrders() {
-        return orders;
+    public LinkedList<String> getOrdersList() {
+        LinkedList<String> result = new LinkedList<>();
+        while (!orders.isEmpty()) {
+            result.add(orders.poll().toString());
+        }
+        return result;
     }
 
     @Override

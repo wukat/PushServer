@@ -8,7 +8,6 @@ package Bar;
 import PublisherSubscriber.Subscriber;
 import java.util.LinkedList;
 import javax.ejb.Local;
-import org.apache.commons.collections4.queue.CircularFifoQueue;
 
 /**
  *
@@ -19,7 +18,7 @@ public interface BarmanLocal extends Subscriber {
 
     public void setBar(BarLocal bar);
 
-    public CircularFifoQueue<Order> getOrders();
+    public LinkedList<String> getOrdersList();
 
     public LinkedList<String> placeOrder(String kind, String productName);
 }
