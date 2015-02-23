@@ -19,6 +19,8 @@ import javax.ejb.Local;
 @Local
 public interface BarLocal extends MagicStrings, Publisher {
 
+    public String getBarName();
+            
     public LinkedList<String> getBeers();
 
     public LinkedList<String> getDrinks();

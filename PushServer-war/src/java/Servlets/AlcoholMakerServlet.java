@@ -77,6 +77,8 @@ public class AlcoholMakerServlet extends HttpServlet {
         } catch (JSONException e) {
             throw new ServletException(e.getMessage(), e);
         }
+        org.apache.commons.collections4.queue.CircularFifoQueue orders = barman.getOrders();
+        System.out.println(orders.size());
         response.getWriter().flush();
     }
 

@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import javax.ejb.DependsOn;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
@@ -23,15 +24,16 @@ import org.apache.commons.collections4.queue.CircularFifoQueue;
  */
 //@Stateful(name = "Barman")
 @Named
+@DependsOn("SubscribeServiceLocal")
 @SessionScoped  // SERIALIZABLE OGARNAC - DODAC METODY
 public class Barman implements BarmanLocal, Serializable {
 
-    @EJB
+    @EJB(beanName = "SubscribeService")
     private SubscribeServiceLocal subscribeService;
 
     private BarLocal bar;
     private final CircularFifoQueue<Order> orders = new CircularFifoQueue<>();
-
+    
     @Override
     public CircularFifoQueue<Order> getOrders() {
         return orders;

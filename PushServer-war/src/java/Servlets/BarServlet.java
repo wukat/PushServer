@@ -71,6 +71,7 @@ public class BarServlet extends HttpServlet {
         
         System.out.println(bar.getDrinks().get(1) + "DDDDDDDDDDDDDD");
         barman.setBar(bar);
+        barman.register(bar.getBarName());
        System.out.println(bar.getDrinks().get(1) + "DDDDDDDDDDDDDD");
         // System.out.println(bar.makeBeer("Jasne"));
        
