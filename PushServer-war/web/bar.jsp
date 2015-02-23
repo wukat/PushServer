@@ -68,16 +68,22 @@
                     }
                 %>
             </div>
+        </div>
+
+        <div class="row">
+            <div class=" col-md-3">
+                <h3>Przepis na napoj:</h3>
+                <div id="recipe"  style="font-family: monospace;">
+
+                </div>
             </div>
 
-            <h3>Przepis na napoj:</h3>
-            <div id="recipe" style="font-family: monospace;">
+            <div class=" col-md-3">
+                <h3>Ostatnio zrealizowane zamowienia:</h3>
+                <div id="orders">
 
+                </div>
             </div>
-
-            <h3>Ostatnio zrealizowane zamowienia:</h3>
-
-            <div id="orders">
         </div>
     </body>
 </html>
