@@ -3,22 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Servlets;
 
-import Bar.BarLocal;
 import Bar.Barman;
-import Bar.BarmanLocal;
+import Bar.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
 import javax.inject.Inject;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.collections4.queue.CircularFifoQueue;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -31,7 +28,7 @@ public class AlcoholMakerServlet extends HttpServlet {
 
     @Inject
     private Barman barman;
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,42 +40,25 @@ public class AlcoholMakerServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //response.setContentType("text/html;charset=UTF-8");
-        
-        //BarmanLocal barman;
+
         String barName = request.getParameter("bar");
         String alcohol = request.getParameter("alcohol");
         String alcoholType = request.getParameter("alcoholType");
-         
-        
-        System.out.println(barName + " " + alcohol + " " + alcoholType);
-        
+        LinkedList<String> recipe;
+        LinkedList<String> orders;
+
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType("application/json");
-        LinkedList<String> events = new LinkedList<>();
-        //costam.add("Data 02.02.0002: Drink jakistam");
-        //costam.add("Data 02.02.0002: Drink jakistam222");
-
-        //response.setContentType("text/html;charset=UTF-8");
-        
-//        try {
-//            InitialContext ctx  = new InitialContext();
-//            barman = (BarmanLocal) ctx.lookup("java:global/PushServer/PushServerEJB/Barman");
-//            events = barman.placeOrder(alcoholType, alcohol);
-//        } catch (NamingException e) {
-//            System.out.println(e);
-//            return;
-//        }
-        
-        events = barman.placeOrder(alcoholType, alcohol);
-        
+        recipe = barman.placeOrder(alcoholType, alcohol);
+        orders = barman.getOrdersList();
         try (PrintWriter out = response.getWriter()) {
-            out.write(new JSONObject().put("events", new JSONArray(events)).toString());
+            out.write(new JSONObject()
+                    .put("recipe", new JSONArray(recipe))
+                    .put("orders", new JSONArray(orders))
+                    .toString());
         } catch (JSONException e) {
             throw new ServletException(e.getMessage(), e);
         }
-        org.apache.commons.collections4.queue.CircularFifoQueue orders = barman.getOrders();
-        System.out.println(orders.size());
         response.getWriter().flush();
     }
 
