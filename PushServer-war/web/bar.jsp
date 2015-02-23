@@ -19,9 +19,10 @@
                 var bar = document.getElementById('welcome').getAttribute('title');
                 var alcohol = button.value;
                 $.post('AlcoholMakerServlet', {bar: bar, alcohol: alcohol, alcoholType: alcoholType}, function(data) {
+                    $('#recipe').empty();
                     var events = data.events;
                     for (var i in events) {
-                        $('#statistics').append('<span>' + events[i] + '</span><br>');
+                        $('#recipe').append('<span>' + events[i] + '</span><br>');
                     }
                 });
             }
@@ -57,8 +58,8 @@
                 %>
             </div>
             
-            <h3>Statystyki sprzedazy:</h3>
-            <div id="statistics" style="font-family: monospace;">
+            <h3>Przepis na napoj:</h3>
+            <div id="recipe" style="font-family: monospace;">
                 
             </div>
             
