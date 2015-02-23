@@ -94,7 +94,7 @@ public abstract class BarAbstract implements BarLocal {
 
     protected boolean checkCreation(IngredientsGetter alcohol) {
         String missingProduct = whichPorudctIsMissing(alcohol);
-        if (missingProduct != null) {
+        if (missingProduct == null) {
             actualizeProductsState(alcohol);
             return true;
         } else {
