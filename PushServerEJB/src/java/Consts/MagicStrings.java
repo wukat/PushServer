@@ -22,4 +22,8 @@ public interface MagicStrings {
     public static final String pineappleJuice = "Sok ananasowy";
     public static final String bloodyMary = "Bloody Mary";
     public static final String pinaColada = "Pina Colada";
+    public static final String luxuryBar = "Bar Luksus";
+    public static final String plebeianBar = "Bar Plebejski";
+    public static final String drink = "drink";
+    public static final String beer = "beer";
 }

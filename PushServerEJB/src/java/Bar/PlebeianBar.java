@@ -8,8 +8,6 @@ package Bar;
 import Factory.AlcoholFactory;
 import Alcohols.Beer;
 import Alcohols.Drink;
-import PublisherSubscriber.Event;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import javax.annotation.PostConstruct;
@@ -49,7 +47,7 @@ public class PlebeianBar extends BarAbstract implements BarLocal {
         beers.add(lagerBeer);
         beers.add(darkBeer);
 
-        barName = "PlebeianBar";
+        barName = plebeianBar;
     }
 
     @Override

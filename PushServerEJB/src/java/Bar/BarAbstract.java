@@ -33,6 +33,7 @@ public abstract class BarAbstract implements BarLocal {
     LinkedList<String> beers;
     String barName;
 
+    @Override
     public String getBarName() {
         return barName;
     }

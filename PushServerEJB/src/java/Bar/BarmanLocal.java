@@ -5,7 +5,6 @@
  */
 package Bar;
 
-import PublisherSubscriber.Event;
 import PublisherSubscriber.Subscriber;
 import java.util.LinkedList;
 import javax.ejb.Local;

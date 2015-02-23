@@ -5,15 +5,14 @@
  */
 package Bar;
 
+import Consts.MagicStrings;
 import PublisherSubscriber.Event;
 import PublisherSubscriber.SubscribeServiceLocal;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import javax.ejb.DependsOn;
 import javax.ejb.EJB;
-import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
@@ -26,13 +25,13 @@ import org.apache.commons.collections4.queue.CircularFifoQueue;
 @Named
 @DependsOn("SubscribeServiceLocal")
 @SessionScoped  // SERIALIZABLE OGARNAC - DODAC METODY
-public class Barman implements BarmanLocal, Serializable {
+public class Barman implements BarmanLocal, Serializable, MagicStrings {
 
     @EJB(beanName = "SubscribeService")
     private SubscribeServiceLocal subscribeService;
 
     private BarLocal bar;
-    private final CircularFifoQueue<Order> orders = new CircularFifoQueue<>();
+    private final CircularFifoQueue<Order> orders = new CircularFifoQueue<>(5);
     
     @Override
     public CircularFifoQueue<Order> getOrders() {
@@ -47,9 +46,9 @@ public class Barman implements BarmanLocal, Serializable {
     @Override
     public LinkedList<String> placeOrder(String kind, String productName) {
         switch (kind) {
-            case "drink":
+            case drink:
                 return listOfIngredients(bar.makeDrink(productName).getIngredients());
-            case "beer":
+            case beer:
                 return listOfIngredients(bar.makeBeer(productName).getIngredients());
             default:
                 return new LinkedList<>();

@@ -8,24 +8,12 @@ package Bar;
 import Factory.AlcoholFactory;
 import Alcohols.Beer;
 import Alcohols.Drink;
-import Factory.LuxuryAlcoholFactory;
-import Factory.PlebeianAlcoholFactory;
-import PublisherSubscriber.Event;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.ejb.DependsOn;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
-import javax.ejb.Startup;
-import javax.ejb.Stateful;
-import javax.inject.Inject;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
 /**
  *
@@ -59,7 +47,7 @@ public class LuxuryBar extends BarAbstract implements BarLocal {
         beers.add(lagerBeer);
         beers.add(darkBeer);
 
-        barName = "LuxuryBar";
+        barName = luxuryBar;
     }
 
     @Override

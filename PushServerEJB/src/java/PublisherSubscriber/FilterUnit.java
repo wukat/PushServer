@@ -5,7 +5,6 @@
  */
 package PublisherSubscriber;
 
-import Bar.BarLocal;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import javax.ejb.Singleton;
