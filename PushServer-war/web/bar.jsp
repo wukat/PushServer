@@ -17,9 +17,8 @@
         <script type="text/javascript" src="http://jquery-json.googlecode.com/files/jquery.json-2.2.min.js"></script>
         <script type="text/javascript">
             function createAlcohol(button, alcoholType) {
-                var bar = document.getElementById('welcome').getAttribute('title');
                 var alcohol = button.value;
-                $.post('AlcoholMakerServlet', {bar: bar, alcohol: alcohol, alcoholType: alcoholType}, function(data) {
+                $.post('AlcoholMakerServlet', {alcohol: alcohol, alcoholType: alcoholType}, function(data) {
                     $('#recipe').empty();
                     var recipe = data.recipe;
                     for (var i in recipe) {

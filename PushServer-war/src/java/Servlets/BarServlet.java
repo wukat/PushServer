@@ -6,16 +6,12 @@
 
 package Servlets;
 
-import Bar.BarAbstract;
 import Bar.BarLocal;
 import Bar.Barman;
-import Bar.BarmanLocal;
+import Consts.MagicStrings;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import javax.ejb.EJB;
-import javax.enterprise.context.Dependent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -31,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author krzysztof
  */
 @WebServlet
-public class BarServlet extends HttpServlet {
+public class BarServlet extends HttpServlet implements MagicStrings {
     
     @Inject
     private Barman barman;
@@ -47,42 +43,33 @@ public class BarServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        BarLocal bar;
+        
+        BarLocal barLocal;
 
-        if (request.getParameter("bar") == null) {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.html");
+        if (request.getParameter(BAR) == null) {
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(INDEX_SITE);
             dispatcher.include(request, response);
             return;
         }
-        response.setContentType("text/html;charset=UTF-8");
-        
-//        try {
-//            InitialContext ctx  = new InitialContext();
-//            barman = (BarmanLocal) ctx.lookup("java:global/PushServer/PushServerEJB/Barman");
-//        } catch (NamingException e) {
-//            System.out.println(e);
-//            return;
-//        }
         
         try {
             InitialContext ctx  = new InitialContext();
-            bar = (BarLocal) ctx.lookup("java:global/PushServer/PushServerEJB/" + request.getParameter("bar").replaceAll("\\s+",""));
+            barLocal = (BarLocal) ctx.lookup(EJB_PATH 
+                    + request.getParameter(BAR).replaceAll("\\s+",""));
         } catch (NamingException e) {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.html");
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, EXCEPTION_CAUGHT, e);
+            RequestDispatcher dispatcher = getServletContext()
+                    .getRequestDispatcher(INDEX_SITE);
             dispatcher.include(request, response);
             return;
         }
         
-        System.out.println(bar.getDrinks().get(1) + "DDDDDDDDDDDDDD");
-        barman.setBar(bar);
-        barman.register(bar.getBarName());
-       System.out.println(bar.getDrinks().get(1) + "DDDDDDDDDDDDDD");
-        // System.out.println(bar.makeBeer("Jasne"));
-       
-        request.setAttribute("beers", bar.getBeers());
-        request.setAttribute("drinks", bar.getDrinks());
-        
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/bar.jsp");
+        barman.setBar(barLocal);
+        barman.register(barLocal.getBarName());
+        request.setAttribute(BEERS, barLocal.getBeers());
+        request.setAttribute(DRINKS, barLocal.getDrinks());
+        response.setContentType("text/html;charset=UTF-8");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(BAR_SITE);
         dispatcher.include(request, response);
     }
 

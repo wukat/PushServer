@@ -19,8 +19,8 @@ public abstract class Supplier {
     protected Integer stockAmount;
     
     public Supplier(String stockName, Integer stockAmount) {
+        this.stockName = stockName;
         this.stockAmount = stockAmount;
-        this.next = next;
     }
     
     public void setNext(Supplier supplier) {

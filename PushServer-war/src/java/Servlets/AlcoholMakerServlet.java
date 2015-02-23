@@ -6,17 +6,19 @@
 package Servlets;
 
 import Bar.Barman;
-import Bar.Order;
+import Consts.MagicStrings;
+import static Consts.MagicStrings.EXCEPTION_CAUGHT;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.collections4.queue.CircularFifoQueue;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -25,7 +27,8 @@ import org.codehaus.jettison.json.JSONObject;
  *
  * @author krzysztof
  */
-public class AlcoholMakerServlet extends HttpServlet {
+@WebServlet
+public class AlcoholMakerServlet extends HttpServlet implements MagicStrings {
 
     @Inject
     private Barman barman;
@@ -42,9 +45,9 @@ public class AlcoholMakerServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String barName = request.getParameter("bar");
-        String alcohol = request.getParameter("alcohol");
-        String alcoholType = request.getParameter("alcoholType");
+        
+        String alcohol = request.getParameter(ALCOHOL);
+        String alcoholType = request.getParameter(ALCOHOL_TYPE);
         LinkedList<String> recipe;
         LinkedList<String> orders;
 
@@ -52,15 +55,13 @@ public class AlcoholMakerServlet extends HttpServlet {
         response.setContentType("application/json");
         recipe = barman.placeOrder(alcoholType, alcohol);
         orders = barman.getOrdersList();
-        for (String a : orders) {
-            System.out.println(a);
-        }
         try (PrintWriter out = response.getWriter()) {
             out.write(new JSONObject()
-                    .put("recipe", new JSONArray(recipe))
-                    .put("orders", new JSONArray(orders))
+                    .put(RECIPE, new JSONArray(recipe))
+                    .put(ORDERS, new JSONArray(orders))
                     .toString());
         } catch (JSONException e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, EXCEPTION_CAUGHT, e);
             throw new ServletException(e.getMessage(), e);
         }
         response.getWriter().flush();
