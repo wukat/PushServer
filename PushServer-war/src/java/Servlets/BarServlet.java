@@ -47,9 +47,13 @@ public class BarServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //BarmanLocal barman;
         BarLocal bar;
-        
+
+        if (request.getParameter("bar") == null) {
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.html");
+            dispatcher.include(request, response);
+            return;
+        }
         response.setContentType("text/html;charset=UTF-8");
         
 //        try {
@@ -63,9 +67,9 @@ public class BarServlet extends HttpServlet {
         try {
             InitialContext ctx  = new InitialContext();
             bar = (BarLocal) ctx.lookup("java:global/PushServer/PushServerEJB/" + request.getParameter("bar").replaceAll("\\s+",""));
-        
         } catch (NamingException e) {
-            System.out.println(e);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.html");
+            dispatcher.include(request, response);
             return;
         }
         

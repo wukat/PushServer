@@ -21,7 +21,6 @@
                 var alcohol = button.value;
                 $.post('AlcoholMakerServlet', {bar: bar, alcohol: alcohol, alcoholType: alcoholType}, function(data) {
                     $('#recipe').empty();
-//                    $('#orders').empty();
                     var recipe = data.recipe;
                     for (var i in recipe) {
                         $('#recipe').append('<span>' + recipe[i] + '</span><br>');
