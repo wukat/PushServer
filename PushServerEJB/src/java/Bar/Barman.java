@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Bar;
 
+import PublisherSubscriber.Event;
+import PublisherSubscriber.SubscribeServiceLocal;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 
@@ -15,20 +18,28 @@ import org.apache.commons.collections4.queue.CircularFifoQueue;
  *
  * @author wukat
  */
-@Stateful(name="Barman")
+@Stateful(name = "Barman")
 public class Barman implements BarmanLocal {
 
+    @EJB
+    private SubscribeServiceLocal subscribeService;
+
     private BarLocal bar;
-    private CircularFifoQueue<Order> events;
-    
+    private final CircularFifoQueue<Event> events = new CircularFifoQueue<>();
+
+    @Override
+    public CircularFifoQueue<Event> getEvents() {
+        return events;
+    }
+
     @Override
     public void setBar(BarLocal bar) {
         this.bar = bar;
-    }    
-    
+    }
+
     @Override
     public LinkedList<String> placeOrder(String kind, String productName) {
-        switch (kind)  {
+        switch (kind) {
             case "drink":
                 return listOfIngredients(bar.makeDrink(productName).getIngredients());
             case "beer":
@@ -37,12 +48,27 @@ public class Barman implements BarmanLocal {
                 return new LinkedList<>();
         }
     }
-    
-    private LinkedList<String> listOfIngredients(HashMap<String, Integer> ingredients) {
+
+    private LinkedList<String> listOfIngredients(LinkedHashMap<String, Integer> ingredients) {
         LinkedList<String> result = new LinkedList<>();
         for (String product : ingredients.keySet()) {
             result.add(product + " " + ingredients.get(product).toString() + "\n");
         }
         return result;
+    }
+
+    @Override
+    public void receiveEvent(Event event) {
+        events.add(event);
+    }
+
+    @Override
+    public void register(String topic) {
+        subscribeService.registerSubscriber(topic, this);
+    }
+
+    @Override
+    public void unregister(String topic) {
+        subscribeService.unregisterSubscriber(topic, this);
     }
 }

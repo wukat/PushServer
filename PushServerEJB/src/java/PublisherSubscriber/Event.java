@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Factory;
-
-import java.util.LinkedHashMap;
+package PublisherSubscriber;
 
 /**
  *
- * @author krzysztof
+ * @author wukat
  */
-public interface IngredientsGetter {
+public interface Event {
 
-    public LinkedHashMap<String, Integer> getIngredients();
+    public String getTopic();
 }

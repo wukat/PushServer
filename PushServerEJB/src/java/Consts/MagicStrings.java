@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Consts;
 
 /**
@@ -11,11 +10,13 @@ package Consts;
  * @author wukat
  */
 public interface MagicStrings {
+
     public static final String lagerBeer = "Jasne";
     public static final String vodka = "Wódka";
     public static final String water = "Woda";
-     public static final String tomatoJuice = "Sok pomidorowy"; public static final String tabasco = "Tabasco";
-     public static final String darkBeer = "Ciemne";
+    public static final String tomatoJuice = "Sok pomidorowy";
+    public static final String tabasco = "Tabasco";
+    public static final String darkBeer = "Ciemne";
     public static final String rum = "Rum";
     public static final String coconutCream = "Krem kokosowy";
     public static final String pineappleJuice = "Sok ananasowy";

@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Alcohols;
 
 import Consts.MagicStrings;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  *
@@ -15,16 +14,16 @@ import java.util.HashMap;
  */
 public class Water implements Drink, Beer, MagicStrings {
 
-    private final HashMap<String, Integer> ingredients;
-    
+    private final LinkedHashMap<String, Integer> ingredients;
+
     public Water() {
-        ingredients = new HashMap();
+        ingredients = new LinkedHashMap();
         ingredients.put(water, 200);
     }
-    
+
     @Override
-    public HashMap<String, Integer> getIngredients() {
+    public LinkedHashMap<String, Integer> getIngredients() {
         return ingredients;
     }
-    
+
 }

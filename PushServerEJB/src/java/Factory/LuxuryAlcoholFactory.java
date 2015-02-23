@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Factory;
 
 import Alcohols.LagerBeerExpensive;
@@ -21,13 +20,13 @@ import javax.ejb.Singleton;
  */
 @Singleton
 public class LuxuryAlcoholFactory implements AlcoholFactory {
-    
+
     @Override
     public Drink createDrink(String name) {
         switch (name) {
-            case bloodyMary :
+            case bloodyMary:
                 return new BloodyMaryExpensive();
-            case pinaColada :
+            case pinaColada:
                 return new PinaColadaExpensive();
         }
         return new Water();
@@ -36,12 +35,12 @@ public class LuxuryAlcoholFactory implements AlcoholFactory {
     @Override
     public Beer createBeer(String name) {
         switch (name) {
-            case lagerBeer :
+            case lagerBeer:
                 return new LagerBeerExpensive();
-            case darkBeer :
+            case darkBeer:
                 return new DarkBeerExpensive();
         }
         return new Water();
     }
-    
+
 }

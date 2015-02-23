@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Factory;
 
 import Alcohols.Beer;
@@ -25,9 +24,9 @@ public class PlebeianAlcoholFactory implements AlcoholFactory {
     @Override
     public Drink createDrink(String name) {
         switch (name) {
-            case bloodyMary :
-                return new BloodyMaryCheap(); 
-            case pinaColada :
+            case bloodyMary:
+                return new BloodyMaryCheap();
+            case pinaColada:
                 return new PinaColadaCheap();
         }
         return new Water();
@@ -36,9 +35,9 @@ public class PlebeianAlcoholFactory implements AlcoholFactory {
     @Override
     public Beer createBeer(String name) {
         switch (name) {
-            case lagerBeer :
+            case lagerBeer:
                 return new LagerBeerCheap();
-            case darkBeer :
+            case darkBeer:
                 return new DarkBeerCheap();
         }
         return new Water();

@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Alcohols;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  *
@@ -14,18 +13,18 @@ import java.util.HashMap;
  */
 public class BloodyMaryExpensive implements Drink {
 
-    private final HashMap<String, Integer> ingredients;
-    
+    private final LinkedHashMap<String, Integer> ingredients;
+
     public BloodyMaryExpensive() {
-        ingredients = new HashMap();
+        ingredients = new LinkedHashMap();
         ingredients.put(vodka, 90);
         ingredients.put(tomatoJuice, 180);
         ingredients.put(tabasco, 10);
     }
-    
+
     @Override
-    public HashMap<String, Integer> getIngredients() {
+    public LinkedHashMap<String, Integer> getIngredients() {
         return ingredients;
     }
-    
+
 }

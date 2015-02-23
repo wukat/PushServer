@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Bar;
 
 import Factory.AlcoholFactory;
 import Alcohols.Beer;
 import Alcohols.Drink;
+import PublisherSubscriber.Event;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import javax.annotation.PostConstruct;
 import javax.ejb.DependsOn;
@@ -29,7 +30,7 @@ public class PlebeianBar extends BarAbstract implements BarLocal {
 
     @PostConstruct
     public void postConstruct() {
-        products = new HashMap<>();
+        products = new LinkedHashMap<>();
         products.put(lagerBeer, 10000);
         products.put(darkBeer, 5000);
         products.put(water, 100000);
@@ -39,16 +40,18 @@ public class PlebeianBar extends BarAbstract implements BarLocal {
         products.put(tabasco, 200);
         products.put(pineappleJuice, 5000);
         products.put(coconutCream, 50);
-        
+
         drinks = new LinkedList<>();
         drinks.add(bloodyMary);
         drinks.add(pinaColada);
-        
+
         beers = new LinkedList<>();
         beers.add(lagerBeer);
         beers.add(darkBeer);
+
+        barName = "PlebeianBar";
     }
-    
+
     @Override
     public Drink makeDrink(String name) {
         return makeDrinkPr(name, alcoholFactory);
@@ -58,7 +61,4 @@ public class PlebeianBar extends BarAbstract implements BarLocal {
     public Beer makeBeer(String name) {
         return makeBeerPr(name, alcoholFactory);
     }
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 }

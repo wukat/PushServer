@@ -10,7 +10,9 @@ import Alcohols.Beer;
 import Alcohols.Drink;
 import Factory.LuxuryAlcoholFactory;
 import Factory.PlebeianAlcoholFactory;
+import PublisherSubscriber.Event;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,7 +40,7 @@ public class LuxuryBar extends BarAbstract implements BarLocal {
 
     @PostConstruct
     public void postConstruct() {
-        products = new HashMap<>();
+        products = new LinkedHashMap<>();
         products.put(lagerBeer, 15000);
         products.put(darkBeer, 5000);
         products.put(water, 100000);
@@ -48,16 +50,18 @@ public class LuxuryBar extends BarAbstract implements BarLocal {
         products.put(tabasco, 500);
         products.put(pineappleJuice, 1000);
         products.put(coconutCream, 200);
-        
+
         drinks = new LinkedList<>();
         drinks.add(bloodyMary);
         drinks.add(pinaColada);
-        
+
         beers = new LinkedList<>();
         beers.add(lagerBeer);
         beers.add(darkBeer);
+
+        barName = "LuxuryBar";
     }
-    
+
     @Override
     public Drink makeDrink(String name) {
         return makeDrinkPr(name, alcoholFactory);

@@ -3,11 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Factory;
+package PublisherSubscriber;
 
-import Alcohols.Beer;
-import Alcohols.Drink;
-import Consts.MagicStrings;
 import javax.ejb.Local;
 
 /**
@@ -15,9 +12,7 @@ import javax.ejb.Local;
  * @author wukat
  */
 @Local
-public interface AlcoholFactory extends MagicStrings {
+public interface PublishServiceLocal {
 
-    public abstract Drink createDrink(String name);
-
-    public abstract Beer createBeer(String name);
+    public void receiveEvent(Event event);
 }

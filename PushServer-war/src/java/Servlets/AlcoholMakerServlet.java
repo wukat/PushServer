@@ -6,7 +6,6 @@
 
 package Servlets;
 
-import Bar.BarLocal;
 import Bar.BarmanLocal;
 import java.io.IOException;
 import java.io.PrintWriter;

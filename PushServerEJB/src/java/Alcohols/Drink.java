@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Alcohols;
 
 import Consts.MagicStrings;
@@ -14,5 +13,5 @@ import Factory.IngredientsGetter;
  * @author krzysztof
  */
 public interface Drink extends IngredientsGetter, MagicStrings {
-    
+
 }
