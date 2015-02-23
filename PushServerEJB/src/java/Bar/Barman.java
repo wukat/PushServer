@@ -7,19 +7,24 @@ package Bar;
 
 import PublisherSubscriber.Event;
 import PublisherSubscriber.SubscribeServiceLocal;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 
 /**
  *
  * @author wukat
  */
-@Stateful(name = "Barman")
-public class Barman implements BarmanLocal {
+//@Stateful(name = "Barman")
+@Named
+@SessionScoped  // SERIALIZABLE OGARNAC - DODAC METODY
+public class Barman implements BarmanLocal, Serializable {
 
     @EJB
     private SubscribeServiceLocal subscribeService;

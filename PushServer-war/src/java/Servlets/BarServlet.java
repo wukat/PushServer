@@ -14,10 +14,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.ejb.EJB;
+import javax.enterprise.context.Dependent;
+import javax.inject.Inject;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +30,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author krzysztof
  */
+@WebServlet
 public class BarServlet extends HttpServlet {
+    
+    @Inject
+    private Barman barman;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,29 +47,31 @@ public class BarServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        BarmanLocal barman; 
+        //BarmanLocal barman;
         BarLocal bar;
         
         response.setContentType("text/html;charset=UTF-8");
         
-        try {
-            InitialContext ctx  = new InitialContext();
-            barman = (BarmanLocal) ctx.lookup("java:global/PushServer/PushServerEJB/Barman");
-        } catch (NamingException e) {
-            System.out.println(e);
-            return;
-        }
+//        try {
+//            InitialContext ctx  = new InitialContext();
+//            barman = (BarmanLocal) ctx.lookup("java:global/PushServer/PushServerEJB/Barman");
+//        } catch (NamingException e) {
+//            System.out.println(e);
+//            return;
+//        }
         
         try {
             InitialContext ctx  = new InitialContext();
             bar = (BarLocal) ctx.lookup("java:global/PushServer/PushServerEJB/" + request.getParameter("bar").replaceAll("\\s+",""));
+        
         } catch (NamingException e) {
             System.out.println(e);
             return;
         }
         
+        System.out.println(bar.getDrinks().get(1) + "DDDDDDDDDDDDDD");
         barman.setBar(bar);
-       
+       System.out.println(bar.getDrinks().get(1) + "DDDDDDDDDDDDDD");
         // System.out.println(bar.makeBeer("Jasne"));
        
         request.setAttribute("beers", bar.getBeers());
