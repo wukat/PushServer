@@ -5,7 +5,7 @@
  */
 package PublisherSubscriber;
 
-import java.util.LinkedList;
+import java.util.LinkedHashSet;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -24,7 +24,7 @@ public class PublishService implements PublishServiceLocal {
         sendEvent(filterUnit.getTopicSubsribers(event.getTopic()), event);
     }
 
-    private void sendEvent(LinkedList<Subscriber> subscribers, Event event) {
+    private void sendEvent(LinkedHashSet<Subscriber> subscribers, Event event) {
         for (Subscriber sub : subscribers) {
             sub.receiveEvent(event);
         }

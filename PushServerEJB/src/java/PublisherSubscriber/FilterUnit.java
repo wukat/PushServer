@@ -6,7 +6,7 @@
 package PublisherSubscriber;
 
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
+import java.util.LinkedHashSet;
 import javax.ejb.Singleton;
 import javax.ejb.LocalBean;
 
@@ -18,22 +18,25 @@ import javax.ejb.LocalBean;
 @LocalBean
 public class FilterUnit {
 
-    LinkedHashMap<String, LinkedList<Subscriber>> subscribers = new LinkedHashMap<>();
+    LinkedHashMap<String, LinkedHashSet<Subscriber>> subscribers = new LinkedHashMap<>();
 
-    public LinkedList<Subscriber> getTopicSubsribers(String topic) {
+    public LinkedHashSet<Subscriber> getTopicSubsribers(String topic) {
         for (String actTopic : subscribers.keySet()) {
             if (actTopic.equals(topic)) {
+                for (Subscriber temp : subscribers.get(actTopic)) {
+                    System.out.println(temp);
+                }
                 return subscribers.get(actTopic);
             }
         }
-        return new LinkedList<>();
+        return new LinkedHashSet<>();
     }
 
     public void addSubsriber(String topic, Subscriber subscriber) {
         if (subscribers.containsKey(topic)) {
             subscribers.get(topic).add(subscriber);
         } else {
-            LinkedList<Subscriber> tempList = new LinkedList<>();
+            LinkedHashSet<Subscriber> tempList = new LinkedHashSet<>();
             tempList.add(subscriber);
             subscribers.put(topic, tempList);
         }

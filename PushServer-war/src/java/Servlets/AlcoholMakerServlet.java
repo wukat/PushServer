@@ -51,6 +51,9 @@ public class AlcoholMakerServlet extends HttpServlet {
         response.setContentType("application/json");
         recipe = barman.placeOrder(alcoholType, alcohol);
         orders = barman.getOrdersList();
+        for (String a : orders) {
+            System.out.println(a);
+        }
         try (PrintWriter out = response.getWriter()) {
             out.write(new JSONObject()
                     .put("recipe", new JSONArray(recipe))

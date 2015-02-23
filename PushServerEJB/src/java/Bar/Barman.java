@@ -11,6 +11,7 @@ import PublisherSubscriber.SubscribeServiceLocal;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import javax.annotation.PreDestroy;
 import javax.ejb.DependsOn;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -83,4 +84,10 @@ public class Barman implements BarmanLocal, Serializable, MagicStrings {
     public void unregister(String topic) {
         subscribeService.unregisterSubscriber(topic, this);
     }
+    
+    @PreDestroy
+    public void cleanUp() {
+        unregister(bar.getBarName());
+    }
+    
 }

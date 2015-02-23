@@ -21,12 +21,16 @@
                 var alcohol = button.value;
                 $.post('AlcoholMakerServlet', {bar: bar, alcohol: alcohol, alcoholType: alcoholType}, function(data) {
                     $('#recipe').empty();
-                    $('#orders').empty();
+//                    $('#orders').empty();
                     var recipe = data.recipe;
                     for (var i in recipe) {
                         $('#recipe').append('<span>' + recipe[i] + '</span><br>');
                     }
                     var orders = data.orders;
+                    var toInsert = orders.length;
+                    while (($('#orders').children().length / 2) + toInsert > 5) {
+                        $('#orders').find(':first-child').remove();
+                    }
                     for (var i in orders) {
                         $('#orders').append('<span>' + orders[i] + '</span><br>');
                     }
