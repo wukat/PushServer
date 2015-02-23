@@ -20,7 +20,7 @@ public interface BarmanLocal extends Subscriber {
 
     public void setBar(BarLocal bar);
 
-    public CircularFifoQueue<Event> getEvents();
+    public CircularFifoQueue<Order> getOrders();
 
     public LinkedList<String> placeOrder(String kind, String productName);
 }

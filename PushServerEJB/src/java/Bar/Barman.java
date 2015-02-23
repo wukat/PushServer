@@ -25,11 +25,11 @@ public class Barman implements BarmanLocal {
     private SubscribeServiceLocal subscribeService;
 
     private BarLocal bar;
-    private final CircularFifoQueue<Event> events = new CircularFifoQueue<>();
+    private final CircularFifoQueue<Order> orders = new CircularFifoQueue<>();
 
     @Override
-    public CircularFifoQueue<Event> getEvents() {
-        return events;
+    public CircularFifoQueue<Order> getOrders() {
+        return orders;
     }
 
     @Override
@@ -59,7 +59,9 @@ public class Barman implements BarmanLocal {
 
     @Override
     public void receiveEvent(Event event) {
-        events.add(event);
+        if (event.getClass().equals(Order.class)) {
+            orders.add((Order) event);
+        }
     }
 
     @Override
