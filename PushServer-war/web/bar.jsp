@@ -41,10 +41,10 @@
                 }
                 for (var i in orders) {
                     if (orders[i].indexOf("brak") > -1) {
-                            $('#orders').append('<span style="color: red">' + orders[i] + '</span><br>');
-                        } else {
-                            $('#orders').append('<span>' + orders[i] + '</span><br>');
-                        }
+                        $('#orders').append('<span style="color: red">' + orders[i] + '</span><br>');
+                    } else {
+                        $('#orders').append('<span>' + orders[i] + '</span><br>');
+                    }
                 }
             }
         </script>
@@ -53,22 +53,22 @@
         <div class="row">
             <div class=" col-md-11">
                 <h1 id="welcome" title="<%= (String) request.getParameter("bar")%>">Witaj w <%= (String) request.getParameter("bar")%>!</h1>
-                
+
                 <h2>Obserwowane bary:</h2>
-                    <%
-                        if (((String) request.getParameter("bar")).equals("Plebeian Bar")){
-                            out.println("<input id=\"Plebeian Bar\" type=\"checkbox\" checked=\"checked\" name=\"barOptions\" value=\"Plebeian Bar\">Plebeian Bar<br>");
-                        } else {
-                            out.println("<input id=\"Plebeian Bar\" type=\"checkbox\" name=\"barOptions\" value=\"Plebeian Bar\">Plebeian Bar<br>");
-                        }
-                        if (((String) request.getParameter("bar")).equals("Luxury Bar")){
-                            out.println("<input id=\"Luxury Bar\" type=\"checkbox\" checked=\"checked\" name=\"barOptions\" value=\"Luxury Bar\">Luxury Bar<br>");
-                        } else {
-                            out.println("<input id=\"Luxury Bar\" type=\"checkbox\" name=\"barOptions\" value=\"Luxury Bar\">Luxury Bar<br>");
-                        }
-                    %>
-                    <button type="button" value="Potwierdz" onclick="subscribe();">Potwierdz</button>             
-                
+                <%
+                    if (((String) request.getParameter("bar")).equals("Plebeian Bar")) {
+                        out.println("<input id=\"Plebeian Bar\" type=\"checkbox\" checked=\"checked\" name=\"barOptions\" value=\"Plebeian Bar\">Plebeian Bar<br>");
+                    } else {
+                        out.println("<input id=\"Plebeian Bar\" type=\"checkbox\" name=\"barOptions\" value=\"Plebeian Bar\">Plebeian Bar<br>");
+                    }
+                    if (((String) request.getParameter("bar")).equals("Luxury Bar")) {
+                        out.println("<input id=\"Luxury Bar\" type=\"checkbox\" checked=\"checked\" name=\"barOptions\" value=\"Luxury Bar\">Luxury Bar<br>");
+                    } else {
+                        out.println("<input id=\"Luxury Bar\" type=\"checkbox\" name=\"barOptions\" value=\"Luxury Bar\">Luxury Bar<br>");
+                    }
+                %>
+                <button type="button" value="Potwierdz" onclick="subscribe();">Potwierdz</button>             
+
                 <h2>Przygotuj napoj:</h2>
             </div>
 
