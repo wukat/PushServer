@@ -22,3 +22,9 @@ PushServer-war/build.xml
 PushServer-war/nbproject/
 PushServerEJB/nbproject/
 PushServer-ejb/nbproject/
+*.aux
+doc/doc.out
+*.toc
+*.backup
+*.log
+*.pdf

@@ -1,0 +1,99 @@
+\documentclass[11pt]{aghdpl}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{capt-of}
+\usepackage{multirow}
+\usepackage{xcolor,colortbl}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{array}
+\usepackage{url}
+\usepackage{varwidth}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\definecolor{Gray}{gray}{0.75}
+\definecolor{LightGray}{gray}{0.90}
+\setitemize{itemsep=3pt,topsep=3pt,parsep=3pt,partopsep=3pt}
+% Command	What it does
+% \parskip
+% Space between paragraphs outside of a list, and part of the space between a non-list paragraph and a list item.
+% \topsep
+% Extra space added to \parskip before the first and after the last item.
+% \parsep
+% Paragraph separation within a single item.
+% \itemsep
+% Extra inter-item spacing added to \parsep.
+% \partopsep
+% This is added to the top and/or bottom of the list if and only if there's a blank line above or below the first or last item. Leave this alone unless blank lines become a problem.
+% nic nie chce dzialać
+\let\oldenumerate\enumerate
+\renewcommand{\enumerate}{
+  \oldenumerate
+  \setlength{\itemsep}{0pt}
+  \setlength{\topsep}{0pt}
+  \setlength{\parsep}{0pt}
+  \setlength{\partopsep}{0pt}
+}
+\setlist[enumerate]{leftmargin=14mm}
+\def \longauthor{Krzysztof Spytkowski, Magdalena Warzecha}
+\author{Wojciech Kasperek, Agnieszka Maksylewicz,}
+\shortauthor{W. Kasperek, A. Maksylewicz, K. Spytkowski, M. Warzecha}
+
+\titlePL{Implementacja mechanizmu server-push z wykorzystaniem techniki piggy-back w technologii EJB3.}
+\titleEN{}
+
+\shorttitlePL{Implementacja mechanizmu server-push z wykorzystaniem techniki piggy-back w technologii EJB3.}
+\shorttitleEN{}
+
+\thesistype{}
+
+\supervisor{dr Rafał Mrówka}
+
+\degreeprogramme{Informatyka}
+
+\subject{Wprowadzenie do wzorców projektowych}
+
+\date{2014/2015}
+
+\department{Katedra Informatyki Stosowanej}
+
+\faculty{Wydział Elektrotechniki, Automatyki,\protect\\[-1mm] Informatyki i Inżynierii Biomedycznej}
+\makeatletter
+\newcommand*{\compress}{\@minipagetrue}
+\makeatother
+\newcommand{\tableEnumerateBegin}{  \noindent\par
+\vspace{-\baselineskip}
+\compress\begin{enumerate}}
+\newcommand{\tableEnumerateEnd}{\end{enumerate}\vspace{-\baselineskip}\vspace{-\baselineskip}}
+%---------------------------------------------------------------------------
+
+\begin{document}
+
+\titlepages
+\vspace*{-20mm}
+\tableofcontents
+\clearpage
+
+\chapter{Opis projektu}
+Celem projektu było implementacja serwera push z~wykorzystaniem techniki piggy-back oraz użycie co najmnioej kilku wzorców projektowych. Dodatkowym założeniem był język implementacji: Java EE (EJB3). Na~wstępie warto wprowadzić kilka podstawowych pojęć związanych z~tematem, aby~dalszy opis był w~pełni zrozumiały.
+
+\section{Server push}
+
+\section{Piggy-back}
+
+\section{EJB3}
+
+
+\end{document}
