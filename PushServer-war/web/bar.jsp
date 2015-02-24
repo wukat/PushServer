@@ -40,7 +40,11 @@
                     $('#orders').find(':first-child').remove();
                 }
                 for (var i in orders) {
-                    $('#orders').append('<span>' + orders[i] + '</span><br>');
+                    if (orders[i].indexOf("brak") > -1) {
+                            $('#orders').append('<span style="color: red">' + orders[i] + '</span><br>');
+                        } else {
+                            $('#orders').append('<span>' + orders[i] + '</span><br>');
+                        }
                 }
             }
         </script>
