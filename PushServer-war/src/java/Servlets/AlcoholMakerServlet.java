@@ -29,7 +29,7 @@ import org.codehaus.jettison.json.JSONObject;
  */
 @WebServlet
 public class AlcoholMakerServlet extends HttpServlet implements MagicStrings {
-
+    
     @Inject
     private Barman barman;
 
@@ -44,14 +44,15 @@ public class AlcoholMakerServlet extends HttpServlet implements MagicStrings {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String alcohol = request.getParameter(ALCOHOL);
         String alcoholType = request.getParameter(ALCOHOL_TYPE);
         LinkedList<String> recipe;
         LinkedList<String> orders;
-
+        
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-16LE");
         recipe = barman.placeOrder(alcoholType, alcohol);
         orders = barman.getOrdersList();
         try (PrintWriter out = response.getWriter()) {
