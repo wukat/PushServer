@@ -1,9 +1,10 @@
 package Bar;
 
 import PublishSubscribe.Event;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Order implements Event {
+public class Order implements Event, Serializable {
 
     private final String orderedProduct;
     private final String topic;

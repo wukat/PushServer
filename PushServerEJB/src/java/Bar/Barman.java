@@ -15,7 +15,7 @@ import org.apache.commons.collections4.queue.CircularFifoQueue;
 
 @Named
 @DependsOn("SubscribeServiceLocal")
-@SessionScoped  // SERIALIZABLE OGARNAC - DODAC METODY
+@SessionScoped 
 public class Barman implements BarmanLocal, Serializable, MagicStrings {
 
     @EJB(beanName = "SubscribeService")

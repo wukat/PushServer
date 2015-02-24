@@ -5,11 +5,12 @@ import Alcohols.Drink;
 import ChainOfResponsibility.ProductReceiver;
 import Consts.MagicStrings;
 import PublishSubscribe.Publisher;
+import java.io.Serializable;
 import java.util.LinkedList;
 import javax.ejb.Local;
 
 @Local
-public interface BarLocal extends MagicStrings, Publisher, ProductReceiver {
+public interface BarLocal extends MagicStrings, Publisher, ProductReceiver, Serializable {
 
     public String getBarName();
 
