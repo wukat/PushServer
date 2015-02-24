@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ page import="java.io.*,java.util.*" %>
+<%@ page import="Consts.MagicStrings" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -45,11 +46,11 @@
     <body>
         <div class="row">
             <div class=" col-md-11">
-                <h1 id="welcome" title="<%= (String) request.getParameter("bar")%>">Witaj w <%= (String) request.getParameter("bar")%>!</h1>
+                <h1 id="welcome" title="<%= (String) request.getParameter(MagicStrings.BAR)%>">Witaj w <%= (String) request.getParameter(MagicStrings.BAR)%>!</h1>
 
                 <h2>Obserwowane bary:</h2>
                 <%
-                    if (((String) request.getParameter("bar")).equals("Plebeian Bar")) {
+                    if (((String) request.getParameter(MagicStrings.BAR)).equals("Plebeian Bar")) {
                         out.println("<input id=\"Plebeian Bar\" type=\"checkbox\" checked=\"checked\" name=\"barOptions\" value=\"Plebeian Bar\">Plebeian Bar<br>");
                     } else {
                         out.println("<input id=\"Plebeian Bar\" type=\"checkbox\" name=\"barOptions\" value=\"Plebeian Bar\">Plebeian Bar<br>");
@@ -68,7 +69,7 @@
             <div id="beers" class=" col-md-3">
                 <h3>Piwa:</h3>
                 <%
-                    LinkedList<String> beerNames = (LinkedList<String>) request.getAttribute("beers");
+                    LinkedList<String> beerNames = (LinkedList<String>) request.getAttribute(MagicStrings.BEERS);
                     Iterator<String> it = beerNames.iterator();
                     while (it.hasNext()) {
                         String paramName = it.next();
@@ -81,11 +82,11 @@
             <div id="drinks" class=" col-md-3">
                 <h3>Drinki:</h3>
                 <%
-                    LinkedList<String> drinkNames = (LinkedList<String>) request.getAttribute("drinks");
+                    LinkedList<String> drinkNames = (LinkedList<String>) request.getAttribute(MagicStrings.DRINKS);
                     Iterator<String> iter = drinkNames.iterator();
                     while (iter.hasNext()) {
                         String paramName = iter.next();
-                        out.println("<button type=\"button\" class=\"btn btn-info btn-lg btn-block\" id=\"" + paramName + "\" value=\"" + paramName + "\" onclick=\"createAlcohol(this, 'drink');\">" + paramName + "</button>");
+                        out.println("<button type=\"button\" class=\"btn btn-info btn-lg btn-block\" id=\"" + paramName + "\" value=\"" + paramName + "\" onclick=\"createAlcohol(this, '" + MagicStrings.DRINK + "');\">" + paramName + "</button>");
                     }
                 %>
             </div>
