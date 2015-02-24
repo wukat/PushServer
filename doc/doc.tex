@@ -91,14 +91,15 @@ Celem projektu jest implementacja mechanizmu server-push przy użyciu techniki p
 
 
 \section{Server-push}
-Oczywistą rzeczą jest to, iż to klient (w omawianym przypadku - przeglądarka internetowa) nawiązuje połączenie z serwer...
-A my chcemy zeby to serwer gdy ma eventy wysyłał je klientowi, ale nie moze, ale sa techinki symulujace takie zachowanie:
+Server-push to~mechanizm umożliwiający serwerowi wysyłać dane do~klienta. Należy jednak pamiętać, że~połączenie nawiązywane jest zawsze przez klienta, przez co~nie jest możliwe proste wysyłanie oczekiwanych danych przez serwer bez interakcji z~klientem.
 
-\begin{itemize}
- \item \textbf{Pooling} -  
- \item \textbf{Piggy-back} - 
- \item \textbf{Comet} -
-\end{itemize}
+Istnieje klika metod pozwalających osiągnąć zamierzony efekt. Są~to:
+\begin{description}
+ \item[pooling] odpytywanie serwera w~stałym krótkim interwale czasowym
+ \item[piggy-back] opisany poniżej
+ \item[comet] podtrzymywanie zapytania przez serwer do~momentu wygaśnięcia czasowego (timeout) lub do~przybycia oczekiwanych informacji (zwracanych klientowi)
+\end{description}
+
 
 \section{Piggy-back}
 Zgodnie z~teamtem projektu, musieliśmy dokładniej przyjrzeć się mechanizmowi piggy-back, który...
