@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PublisherSubscriber;
 
 import java.util.LinkedHashMap;
@@ -10,15 +5,11 @@ import java.util.LinkedHashSet;
 import javax.ejb.Singleton;
 import javax.ejb.LocalBean;
 
-/**
- *
- * @author wukat
- */
 @Singleton
 @LocalBean
 public class FilterUnit {
 
-    LinkedHashMap<String, LinkedHashSet<Subscriber>> subscribers = new LinkedHashMap<>();
+    private final LinkedHashMap<String, LinkedHashSet<Subscriber>> subscribers = new LinkedHashMap<>();
 
     public LinkedHashSet<Subscriber> getTopicSubsribers(String topic) {
         for (String actTopic : subscribers.keySet()) {

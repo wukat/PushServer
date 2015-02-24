@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Consts;
 
-/**
- *
- * @author wukat
- */
 public interface MagicStrings {
 
     public static final String lagerBeer = "Jasne";
@@ -34,8 +25,8 @@ public interface MagicStrings {
     public static final String EJB_PATH = "java:global/PushServer/PushServerEJB/";
     public static final String EXCEPTION_CAUGHT = "exception caught";
     public static final String ALCOHOL = "alcohol";
-    public static final String ALCOHOL_TYPE= "alcoholType";
+    public static final String ALCOHOL_TYPE = "alcoholType";
     public static final String RECIPE = "recipe";
     public static final String ORDERS = "orders";
-    
+
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Bar;
 
 import Factory.AlcoholFactory;
@@ -21,20 +16,17 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-/**
- *
- * @author wukat
- */
 public abstract class BarAbstract implements BarLocal {
-    ProviderMainLocal providerMain = lookupProviderMainLocal();
 
-    PublishServiceLocal publishService = lookupPublishServiceLocal();
+    private final ProviderMainLocal providerMain = lookupProviderMainLocal();
 
-    LinkedHashMap<String, Integer> products;
-    LinkedList<String> drinks;
-    LinkedList<String> beers;
-    String barName;
-    
+    private final PublishServiceLocal publishService = lookupPublishServiceLocal();
+
+    protected LinkedHashMap<String, Integer> products;
+    protected LinkedList<String> drinks;
+    protected LinkedList<String> beers;
+    protected String barName;
+
     @Override
     public String getBarName() {
         return barName;
@@ -55,7 +47,7 @@ public abstract class BarAbstract implements BarLocal {
         Order order = new Order(name, barName);
         if (!checkCreation(currentDrink)) {
             currentDrink = alcoholFactory.createDrink(water);
-            order = new Order(water, barName);
+            order = new Order(name + " - brak składników!", barName);
         }
         sendEvent(order);
         return currentDrink;
@@ -69,7 +61,7 @@ public abstract class BarAbstract implements BarLocal {
         Order order = new Order(name, barName);
         if (!checkCreation(currentBeer)) {
             currentBeer = alcoholFactory.createBeer(water);
-            order = new Order(water, barName);
+            order = new Order(name + " - brak składników!", barName);
         }
         sendEvent(order);
         return currentBeer;
@@ -117,7 +109,7 @@ public abstract class BarAbstract implements BarLocal {
             products.put(product, products.get(product) + amount);
         }
     }
-    
+
     private PublishServiceLocal lookupPublishServiceLocal() {
         try {
             Context c = new InitialContext();

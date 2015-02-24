@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Bar;
 
 import Consts.MagicStrings;
@@ -18,10 +13,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 
-/**
- *
- * @author wukat
- */
 //@Stateful(name = "Barman")
 @Named
 @DependsOn("SubscribeServiceLocal")
@@ -33,7 +24,7 @@ public class Barman implements BarmanLocal, Serializable, MagicStrings {
 
     private BarLocal bar;
     private final CircularFifoQueue<Order> orders = new CircularFifoQueue<>(5);
-    
+
     @Override
     public LinkedList<String> getOrdersList() {
         LinkedList<String> result = new LinkedList<>();
@@ -84,10 +75,9 @@ public class Barman implements BarmanLocal, Serializable, MagicStrings {
     public void unregister(String topic) {
         subscribeService.unregisterSubscriber(topic, this);
     }
-    
+
     @PreDestroy
     public void cleanUp() {
         unregister(bar.getBarName());
     }
-    
 }

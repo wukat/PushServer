@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ChainOfResponsibility;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-/**
- *
- * @author wukat
- */
 @Stateless
 public class ProviderMain implements ProviderMainLocal {
 
@@ -32,7 +23,7 @@ public class ProviderMain implements ProviderMainLocal {
             specialsProvider.handleRequest(product, amount, requester);
         }
     }
-    
+
     @Override
     public void handleProductRequest(String product, ProductReceiver requester) {
         if (beerProvider.canHandle(product)) {
@@ -43,5 +34,5 @@ public class ProviderMain implements ProviderMainLocal {
             specialsProvider.handleRequest(product, requester);
         }
     }
-    
+
 }
