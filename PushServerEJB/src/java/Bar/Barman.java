@@ -13,7 +13,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 
-//@Stateful(name = "Barman")
 @Named
 @DependsOn("SubscribeServiceLocal")
 @SessionScoped  // SERIALIZABLE OGARNAC - DODAC METODY
