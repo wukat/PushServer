@@ -3,16 +3,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Wybor baru</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
     </head>
     <body>
         <form method="post" action="BarServlet">
             <center>
                 <h2>Wybierz swoje miejsce pracy</h2> 
-                <select name="bar">
+                <select class="btn btn-default dropdown-toggle" name="bar">
                     <option value="Plebeian Bar">Plebeian Bar</option>
                     <option value="Luxury Bar">Luxury Bar</option>
                 </select>
-                <p><input value="Rozpocznij prace" type="submit"></p>
+                <br><br>
+                <p><input class="btn btn-info btn-lg" value="Rozpocznij prace" type="submit"></p>
             </center>
         </form>
     </body>

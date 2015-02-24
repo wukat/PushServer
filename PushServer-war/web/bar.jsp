@@ -67,7 +67,7 @@
                         out.println("<input id=\"Luxury Bar\" type=\"checkbox\" name=\"barOptions\" value=\"Luxury Bar\">Luxury Bar<br>");
                     }
                 %>
-                <button type="button" value="Potwierdz" onclick="subscribe();">Potwierdz</button>             
+                <button type="button" class="btn btn-info btn-lg" value="Potwierdz" onclick="subscribe();">Potwierdz</button>             
 
                 <h2>Przygotuj napoj:</h2>
             </div>
