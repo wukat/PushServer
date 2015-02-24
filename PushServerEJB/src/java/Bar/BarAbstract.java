@@ -93,7 +93,7 @@ public abstract class BarAbstract implements BarLocal {
             actualizeProductsState(alcohol);
             return true;
         } else {
-            providerMain.handleProductRequest(missingProduct, Integer.SIZE, this);
+            providerMain.handleProductRequest(missingProduct, this);
             return false;
         }
     }

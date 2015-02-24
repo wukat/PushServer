@@ -14,9 +14,6 @@ public class FilterUnit {
     public LinkedHashSet<Subscriber> getTopicSubsribers(String topic) {
         for (String actTopic : subscribers.keySet()) {
             if (actTopic.equals(topic)) {
-                for (Subscriber temp : subscribers.get(actTopic)) {
-                    System.out.println(temp);
-                }
                 return subscribers.get(actTopic);
             }
         }
