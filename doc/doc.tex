@@ -51,10 +51,10 @@
 \author{Wojciech Kasperek, Agnieszka Maksylewicz,}
 \shortauthor{W. Kasperek, A. Maksylewicz, K. Spytkowski, M. Warzecha}
 
-\titlePL{Implementacja mechanizmu server-push z wykorzystaniem techniki piggy-back w technologii EJB3.}
+\titlePL{Implementacja mechanizmu server-push z wykorzystaniem techniki piggy-back w technologii EJB3}
 \titleEN{}
 
-\shorttitlePL{Implementacja mechanizmu server-push z wykorzystaniem techniki piggy-back w technologii EJB3.}
+\shorttitlePL{Implementacja mechanizmu server-push z wykorzystaniem techniki piggy-back w technologii EJB3}
 \shorttitleEN{}
 
 \thesistype{}
@@ -96,13 +96,20 @@ Server-push to~mechanizm umożliwiający serwerowi wysyłać dane do~klienta. Na
 Istnieje klika metod pozwalających osiągnąć zamierzony efekt. Są~to:
 \begin{description}
  \item[pooling] odpytywanie serwera w~stałym krótkim interwale czasowym
- \item[piggy-back] opisany poniżej
+ \item[piggy-back] opisany w~kolejnej sekcji
  \item[comet] podtrzymywanie zapytania przez serwer do~momentu wygaśnięcia czasowego (timeout) lub do~przybycia oczekiwanych informacji (zwracanych klientowi)
 \end{description}
 
 
 \section{Piggy-back}
-Zgodnie z~teamtem projektu, musieliśmy dokładniej przyjrzeć się mechanizmowi piggy-back, który...
+Nazwa techniki może zostać przetłumaczona jako~``jazda na~barana''. Może to~sugerować sposób działania metody. 
+
+Klient wysyła zapytanie do~serwera w~celu wykonania pewnej operacji. Serwer ma~za~zadanie wysłać odpowiedź zgodną z~oczekiwaniami klienta. Dodatkowo jednak, jeśli posiada inne informacje do~przekazania klientowi, dołącza je~do odpowiedzi, tworząc \textit{mixed response}.
+\begin{center}
+ \includegraphics[width=8cm]{piggy}
+\end{center}
+
+Jest to~rozwiązanie znacznie wydajniejsze niż~\textit{pooling}, ponieważ nie wykorzystuje dodatkowych zasobów klienta. Ma~jednak swoje wady, ponieważ informacje mogą nigdy nie dotrzeć do~klienta (w~przypadku nie wykonania zapytania) lub też~dotrzeć po~długim czasie. Lepszym rozwiązaniem jest \textit{comet}.
 
 \section{Opis pomysłu}
 Stworzona aplikacja to symulacja działania baru (a~właściwie wielu barów), w których pracują barmani...
