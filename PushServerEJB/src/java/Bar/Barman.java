@@ -41,9 +41,9 @@ public class Barman implements BarmanLocal, Serializable, MagicStrings {
     @Override
     public LinkedList<String> placeOrder(String kind, String productName) {
         switch (kind) {
-            case drink:
+            case DRINK:
                 return listOfIngredients(bar.makeDrink(productName).getIngredients());
-            case beer:
+            case BEER:
                 return listOfIngredients(bar.makeBeer(productName).getIngredients());
             default:
                 return new LinkedList<>();

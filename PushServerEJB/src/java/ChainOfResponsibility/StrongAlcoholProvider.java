@@ -10,8 +10,8 @@ public class StrongAlcoholProvider extends AbstractProvider implements Provider 
     @PostConstruct
     public void initialize() {
         products = new LinkedHashMap<>();
-        products.put(vodka, 2000);
-        products.put(rum, 1000);
+        products.put(VODKA, 2000);
+        products.put(RUM, 1000);
     }
 
 }

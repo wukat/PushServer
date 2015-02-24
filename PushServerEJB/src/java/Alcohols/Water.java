@@ -9,7 +9,7 @@ public class Water implements Drink, Beer, MagicStrings {
 
     public Water() {
         ingredients = new LinkedHashMap();
-        ingredients.put(water, 200);
+        ingredients.put(WATER, 200);
     }
 
     @Override

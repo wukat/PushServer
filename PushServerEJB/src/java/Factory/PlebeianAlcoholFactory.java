@@ -15,9 +15,9 @@ public class PlebeianAlcoholFactory implements AlcoholFactory {
     @Override
     public Drink createDrink(String name) {
         switch (name) {
-            case bloodyMary:
+            case BLOODY_MARY:
                 return new BloodyMaryCheap();
-            case pinaColada:
+            case PINA_COLADA:
                 return new PinaColadaCheap();
         }
         return new Water();
@@ -26,9 +26,9 @@ public class PlebeianAlcoholFactory implements AlcoholFactory {
     @Override
     public Beer createBeer(String name) {
         switch (name) {
-            case lagerBeer:
+            case LAGER_BEER:
                 return new LagerBeerCheap();
-            case darkBeer:
+            case DARK_BEER:
                 return new DarkBeerCheap();
         }
         return new Water();

@@ -10,7 +10,7 @@ public class BeerProvider extends AbstractProvider implements Provider {
     @PostConstruct
     public void initialize() {
         products = new LinkedHashMap<>();
-        products.put(lagerBeer, 4000);
-        products.put(darkBeer, 4000);
+        products.put(LAGER_BEER, 4000);
+        products.put(DARK_BEER, 4000);
     }
 }

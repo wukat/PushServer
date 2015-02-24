@@ -20,25 +20,25 @@ public class PlebeianBar extends BarAbstract implements BarLocal {
     @PostConstruct
     public void postConstruct() {
         products = new LinkedHashMap<>();
-        products.put(lagerBeer, 10000);
-        products.put(darkBeer, 5000);
-        products.put(water, 100000);
-        products.put(vodka, 500);
-        products.put(rum, 200);
-        products.put(tomatoJuice, 1000);
-        products.put(tabasco, 200);
-        products.put(pineappleJuice, 5000);
-        products.put(coconutCream, 50);
+        products.put(LAGER_BEER, 10000);
+        products.put(DARK_BEER, 5000);
+        products.put(WATER, 100000);
+        products.put(VODKA, 500);
+        products.put(RUM, 200);
+        products.put(TOMATO_JUICE, 1000);
+        products.put(TABASCO, 200);
+        products.put(PINEAPPLE_JUICE, 5000);
+        products.put(COCONUT_CREAM, 50);
 
         drinks = new LinkedList<>();
-        drinks.add(bloodyMary);
-        drinks.add(pinaColada);
+        drinks.add(BLOODY_MARY);
+        drinks.add(PINA_COLADA);
 
         beers = new LinkedList<>();
-        beers.add(lagerBeer);
-        beers.add(darkBeer);
+        beers.add(LAGER_BEER);
+        beers.add(DARK_BEER);
 
-        barName = plebeianBar;
+        barName = PLEBEIAN_BAR;
     }
 
     @Override

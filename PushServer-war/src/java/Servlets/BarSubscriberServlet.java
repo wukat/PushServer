@@ -28,8 +28,8 @@ public class BarSubscriberServlet extends HttpServlet implements MagicStrings {
 
     public BarSubscriberServlet() {
         this.allBars = new LinkedList<>();
-        allBars.add(plebeianBar);
-        allBars.add(luxuryBar);
+        allBars.add(PLEBEIAN_BAR);
+        allBars.add(LUXURY_BAR);
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

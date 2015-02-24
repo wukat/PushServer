@@ -8,9 +8,9 @@ public class PinaColadaExpensive implements Drink {
 
     public PinaColadaExpensive() {
         ingredients = new LinkedHashMap();
-        ingredients.put(rum, 30);
-        ingredients.put(coconutCream, 30);
-        ingredients.put(pineappleJuice, 90);
+        ingredients.put(RUM, 30);
+        ingredients.put(COCONUT_CREAM, 30);
+        ingredients.put(PINEAPPLE_JUICE, 90);
     }
 
     @Override

@@ -8,7 +8,7 @@ public class DarkBeerExpensive implements Beer {
 
     public DarkBeerExpensive() {
         ingredients = new LinkedHashMap();
-        ingredients.put(darkBeer, 500);
+        ingredients.put(DARK_BEER, 500);
     }
 
     @Override

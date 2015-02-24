@@ -20,25 +20,25 @@ public class LuxuryBar extends BarAbstract implements BarLocal {
     @PostConstruct
     public void postConstruct() {
         products = new LinkedHashMap<>();
-        products.put(lagerBeer, 15000);
-        products.put(darkBeer, 5000);
-        products.put(water, 100000);
-        products.put(vodka, 1000);
-        products.put(rum, 1000);
-        products.put(tomatoJuice, 2000);
-        products.put(tabasco, 500);
-        products.put(pineappleJuice, 1000);
-        products.put(coconutCream, 200);
+        products.put(LAGER_BEER, 15000);
+        products.put(DARK_BEER, 5000);
+        products.put(WATER, 100000);
+        products.put(VODKA, 1000);
+        products.put(RUM, 1000);
+        products.put(TOMATO_JUICE, 2000);
+        products.put(TABASCO, 500);
+        products.put(PINEAPPLE_JUICE, 1000);
+        products.put(COCONUT_CREAM, 200);
 
         drinks = new LinkedList<>();
-        drinks.add(bloodyMary);
-        drinks.add(pinaColada);
+        drinks.add(BLOODY_MARY);
+        drinks.add(PINA_COLADA);
 
         beers = new LinkedList<>();
-        beers.add(lagerBeer);
-        beers.add(darkBeer);
+        beers.add(LAGER_BEER);
+        beers.add(DARK_BEER);
 
-        barName = luxuryBar;
+        barName = LUXURY_BAR;
     }
 
     @Override

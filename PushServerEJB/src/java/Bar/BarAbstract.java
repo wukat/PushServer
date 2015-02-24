@@ -46,7 +46,7 @@ public abstract class BarAbstract implements BarLocal {
         Drink currentDrink = alcoholFactory.createDrink(name);
         Order order = new Order(name, barName);
         if (!checkCreation(currentDrink)) {
-            currentDrink = alcoholFactory.createDrink(water);
+            currentDrink = alcoholFactory.createDrink(WATER);
             order = new Order(name + " - brak składników!", barName);
         }
         sendEvent(order);
@@ -60,7 +60,7 @@ public abstract class BarAbstract implements BarLocal {
         Beer currentBeer = alcoholFactory.createBeer(name);
         Order order = new Order(name, barName);
         if (!checkCreation(currentBeer)) {
-            currentBeer = alcoholFactory.createBeer(water);
+            currentBeer = alcoholFactory.createBeer(WATER);
             order = new Order(name + " - brak składników!", barName);
         }
         sendEvent(order);

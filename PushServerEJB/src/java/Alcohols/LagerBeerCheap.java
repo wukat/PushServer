@@ -8,8 +8,8 @@ public class LagerBeerCheap implements Beer {
 
     public LagerBeerCheap() {
         ingredients = new LinkedHashMap();
-        ingredients.put(lagerBeer, 400);
-        ingredients.put(water, 100);
+        ingredients.put(LAGER_BEER, 400);
+        ingredients.put(WATER, 100);
     }
 
     @Override

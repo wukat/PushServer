@@ -1,12 +1,5 @@
-<%-- 
-    Document   : bar
-    Created on : Feb 21, 2015, 7:09:45 PM
-    Author     : krzysztof
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <%@ page import="java.io.*,java.util.*" %>
 <html>
     <head>

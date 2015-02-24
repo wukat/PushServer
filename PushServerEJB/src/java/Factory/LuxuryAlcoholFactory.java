@@ -15,9 +15,9 @@ public class LuxuryAlcoholFactory implements AlcoholFactory {
     @Override
     public Drink createDrink(String name) {
         switch (name) {
-            case bloodyMary:
+            case BLOODY_MARY:
                 return new BloodyMaryExpensive();
-            case pinaColada:
+            case PINA_COLADA:
                 return new PinaColadaExpensive();
         }
         return new Water();
@@ -26,9 +26,9 @@ public class LuxuryAlcoholFactory implements AlcoholFactory {
     @Override
     public Beer createBeer(String name) {
         switch (name) {
-            case lagerBeer:
+            case LAGER_BEER:
                 return new LagerBeerExpensive();
-            case darkBeer:
+            case DARK_BEER:
                 return new DarkBeerExpensive();
         }
         return new Water();

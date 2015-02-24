@@ -2,21 +2,21 @@ package Consts;
 
 public interface MagicStrings {
 
-    public static final String lagerBeer = "Jasne";
-    public static final String vodka = "Wódka";
-    public static final String water = "Woda";
-    public static final String tomatoJuice = "Sok pomidorowy";
-    public static final String tabasco = "Tabasco";
-    public static final String darkBeer = "Ciemne";
-    public static final String rum = "Rum";
-    public static final String coconutCream = "Krem kokosowy";
-    public static final String pineappleJuice = "Sok ananasowy";
-    public static final String bloodyMary = "Bloody Mary";
-    public static final String pinaColada = "Pina Colada";
-    public static final String luxuryBar = "Bar Luksus";
-    public static final String plebeianBar = "Bar Plebejski";
-    public static final String drink = "drink";
-    public static final String beer = "beer";
+    public static final String LAGER_BEER = "Jasne";
+    public static final String VODKA = "Wódka";
+    public static final String WATER = "Woda";
+    public static final String TOMATO_JUICE = "Sok pomidorowy";
+    public static final String TABASCO = "Tabasco";
+    public static final String DARK_BEER = "Ciemne";
+    public static final String RUM = "Rum";
+    public static final String COCONUT_CREAM = "Krem kokosowy";
+    public static final String PINEAPPLE_JUICE = "Sok ananasowy";
+    public static final String BLOODY_MARY = "Bloody Mary";
+    public static final String PINA_COLADA = "Pina Colada";
+    public static final String LUXURY_BAR = "Bar Luksus";
+    public static final String PLEBEIAN_BAR = "Bar Plebejski";
+    public static final String DRINK = "drink";
+    public static final String BEER = "beer";
     public static final String DRINKS = "drinks";
     public static final String BEERS = "beers";
     public static final String BAR = "bar";

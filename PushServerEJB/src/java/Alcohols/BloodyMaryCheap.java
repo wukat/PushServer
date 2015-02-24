@@ -8,10 +8,10 @@ public class BloodyMaryCheap implements Drink {
 
     public BloodyMaryCheap() {
         ingredients = new LinkedHashMap();
-        ingredients.put(vodka, 40);
-        ingredients.put(water, 100);
-        ingredients.put(tomatoJuice, 130);
-        ingredients.put(tabasco, 10);
+        ingredients.put(VODKA, 40);
+        ingredients.put(WATER, 100);
+        ingredients.put(TOMATO_JUICE, 130);
+        ingredients.put(TABASCO, 10);
     }
 
     @Override
