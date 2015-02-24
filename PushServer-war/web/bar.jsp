@@ -34,12 +34,35 @@
                     }
                 });
             }
+            function subscribe() {
+                var plebeianBar = document.getElementById("Plebeian Bar").checked;
+                var luxuryBar = document.getElementById("Luxury Bar").checked;
+                $.post('BarSubscriberServlet', {"Bar Plebejski": plebeianBar, "Bar Luksus": luxuryBar}, function(data) {
+                    
+                });
+            }
         </script>
     </head>
     <body>
         <div class="row">
             <div class=" col-md-11">
                 <h1 id="welcome" title="<%= (String) request.getParameter("bar")%>">Witaj w <%= (String) request.getParameter("bar")%>!</h1>
+                
+                <h2>Obserwowane bary:</h2>
+                    <%
+                        if (((String) request.getParameter("bar")).equals("Plebeian Bar")){
+                            out.println("<input id=\"Plebeian Bar\" type=\"checkbox\" checked=\"checked\" name=\"barOptions\" value=\"Plebeian Bar\">Plebeian Bar<br>");
+                        } else {
+                            out.println("<input id=\"Plebeian Bar\" type=\"checkbox\" name=\"barOptions\" value=\"Plebeian Bar\">Plebeian Bar<br>");
+                        }
+                        if (((String) request.getParameter("bar")).equals("Luxury Bar")){
+                            out.println("<input id=\"Luxury Bar\" type=\"checkbox\" checked=\"checked\" name=\"barOptions\" value=\"Luxury Bar\">Luxury Bar<br>");
+                        } else {
+                            out.println("<input id=\"Luxury Bar\" type=\"checkbox\" name=\"barOptions\" value=\"Luxury Bar\">Luxury Bar<br>");
+                        }
+                    %>
+                    <button type="button" value="Potwierdz" onclick="subscribe();">Potwierdz</button>             
+                
                 <h2>Przygotuj napoj:</h2>
             </div>
 
