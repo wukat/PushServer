@@ -97,7 +97,7 @@ Istnieje klika metod pozwalających osiągnąć zamierzony efekt. Są~to:
 \begin{description}
  \item[pooling] odpytywanie serwera w~stałym krótkim interwale czasowym
  \item[piggy-back] opisany w~kolejnej sekcji
- \item[comet] podtrzymywanie zapytania przez serwer do~momentu wygaśnięcia czasowego (timeout) lub do~przybycia oczekiwanych informacji (zwracanych klientowi)
+ \item[comet] podtrzymywanie zapytania przez serwer do~momentu wygaśnięcia czasowego (timeout) lub do~pojawienia się oczekiwanych informacji (zwracanych klientowi)
 \end{description}
 
 
@@ -109,7 +109,7 @@ Klient wysyła zapytanie do~serwera w~celu wykonania pewnej operacji. Serwer ma~
  \includegraphics[width=8cm]{piggy}
 \end{center}
 
-Jest to~rozwiązanie znacznie wydajniejsze niż~\textit{pooling}, ponieważ nie wykorzystuje dodatkowych zasobów klienta. Ma~jednak swoje wady, ponieważ informacje mogą nigdy nie dotrzeć do~klienta (w~przypadku nie wykonania zapytania) lub też~dotrzeć po~długim czasie. Lepszym rozwiązaniem jest \textit{comet}.
+Jest to~rozwiązanie znacznie wydajniejsze niż~\textit{pooling}, ze~względu na~brak użycia dodatkowych zasobów klienta. Ma~jednak swoje wady, ponieważ informacje mogą nigdy nie dotrzeć do~klienta (w~przypadku nie wykonania zapytania) lub też~dotrzeć po~długim czasie. Lepszym rozwiązaniem jest \textit{comet}.
 
 \section{Opis pomysłu}
 Stworzona aplikacja to symulacja działania baru (a~właściwie wielu barów), w których pracują barmani...
