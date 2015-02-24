@@ -4,7 +4,7 @@ import Alcohols.Beer;
 import Alcohols.Drink;
 import ChainOfResponsibility.ProductReceiver;
 import Consts.MagicStrings;
-import PublisherSubscriber.Publisher;
+import PublishSubscribe.Publisher;
 import java.util.LinkedList;
 import javax.ejb.Local;
 

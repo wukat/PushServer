@@ -1,4 +1,4 @@
-package PublisherSubscriber;
+package PublishSubscribe;
 
 import java.util.LinkedHashSet;
 import javax.ejb.EJB;

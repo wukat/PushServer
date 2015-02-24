@@ -1,4 +1,4 @@
-package PublisherSubscriber;
+package PublishSubscribe;
 
 public interface Event {
 

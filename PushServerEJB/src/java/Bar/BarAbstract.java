@@ -5,8 +5,8 @@ import Alcohols.Beer;
 import Alcohols.Drink;
 import ChainOfResponsibility.ProviderMainLocal;
 import Factory.IngredientsGetter;
-import PublisherSubscriber.Event;
-import PublisherSubscriber.PublishServiceLocal;
+import PublishSubscribe.Event;
+import PublishSubscribe.PublishServiceLocal;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -42,7 +42,7 @@ public abstract class BarAbstract implements BarLocal {
         return drinks;
     }
 
-    protected Drink makeDrinkPr(String name, AlcoholFactory alcoholFactory) {
+    protected Drink makeDrink(String name, AlcoholFactory alcoholFactory) {
         Drink currentDrink = alcoholFactory.createDrink(name);
         Order order = new Order(name, barName);
         if (!checkCreation(currentDrink)) {
@@ -56,7 +56,7 @@ public abstract class BarAbstract implements BarLocal {
     @Override
     public abstract Drink makeDrink(String name);
 
-    protected Beer makeBeerPr(String name, AlcoholFactory alcoholFactory) {
+    protected Beer makeBeer(String name, AlcoholFactory alcoholFactory) {
         Beer currentBeer = alcoholFactory.createBeer(name);
         Order order = new Order(name, barName);
         if (!checkCreation(currentBeer)) {

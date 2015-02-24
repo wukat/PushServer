@@ -1,4 +1,4 @@
-package PublisherSubscriber;
+package PublishSubscribe;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;

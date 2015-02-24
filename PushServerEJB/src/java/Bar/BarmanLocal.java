@@ -1,6 +1,6 @@
 package Bar;
 
-import PublisherSubscriber.Subscriber;
+import PublishSubscribe.Subscriber;
 import java.util.LinkedList;
 import javax.ejb.Local;
 

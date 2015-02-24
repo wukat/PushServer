@@ -1,8 +1,8 @@
 package Bar;
 
 import Consts.MagicStrings;
-import PublisherSubscriber.Event;
-import PublisherSubscriber.SubscribeServiceLocal;
+import PublishSubscribe.Event;
+import PublishSubscribe.SubscribeServiceLocal;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;

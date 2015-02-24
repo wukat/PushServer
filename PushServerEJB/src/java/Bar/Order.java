@@ -1,6 +1,6 @@
 package Bar;
 
-import PublisherSubscriber.Event;
+import PublishSubscribe.Event;
 import java.util.Date;
 
 public class Order implements Event {

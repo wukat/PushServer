@@ -43,11 +43,11 @@ public class LuxuryBar extends BarAbstract implements BarLocal {
 
     @Override
     public Drink makeDrink(String name) {
-        return makeDrinkPr(name, alcoholFactory);
+        return makeDrink(name, alcoholFactory);
     }
 
     @Override
     public Beer makeBeer(String name) {
-        return makeBeerPr(name, alcoholFactory);
+        return makeBeer(name, alcoholFactory);
     }
 }
