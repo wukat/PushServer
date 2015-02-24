@@ -7,6 +7,7 @@ package Bar;
 
 import Alcohols.Beer;
 import Alcohols.Drink;
+import ChainOfResponsibility.ProductReceiver;
 import Consts.MagicStrings;
 import PublisherSubscriber.Publisher;
 import java.util.LinkedList;
@@ -17,7 +18,7 @@ import javax.ejb.Local;
  * @author wukat
  */
 @Local
-public interface BarLocal extends MagicStrings, Publisher {
+public interface BarLocal extends MagicStrings, Publisher, ProductReceiver {
 
     public String getBarName();
             

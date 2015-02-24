@@ -6,15 +6,10 @@
 
 package ChainOfResponsibility;
 
-import javax.ejb.Local;
-
 /**
  *
- * @author krzysztof
+ * @author wukat
  */
-@Local
-public interface ChainLocal {
-
-    public Integer buyStock(String stockName);
-    
+public interface ProductReceiver {
+    public void receiveProduct(String name, Integer amount);
 }

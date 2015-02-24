@@ -8,6 +8,7 @@ package Bar;
 import Factory.AlcoholFactory;
 import Alcohols.Beer;
 import Alcohols.Drink;
+import ChainOfResponsibility.ProviderMainLocal;
 import Factory.IngredientsGetter;
 import PublisherSubscriber.Event;
 import PublisherSubscriber.PublishServiceLocal;
@@ -25,6 +26,7 @@ import javax.naming.NamingException;
  * @author wukat
  */
 public abstract class BarAbstract implements BarLocal {
+    ProviderMainLocal providerMain = lookupProviderMainLocal();
 
     PublishServiceLocal publishService = lookupPublishServiceLocal();
 
@@ -99,7 +101,7 @@ public abstract class BarAbstract implements BarLocal {
             actualizeProductsState(alcohol);
             return true;
         } else {
-            // call chain
+            providerMain.handleProductRequest(missingProduct, Integer.SIZE, this);
             return false;
         }
     }
@@ -109,10 +111,27 @@ public abstract class BarAbstract implements BarLocal {
         publishService.receiveEvent(event);
     }
 
+    @Override
+    public void receiveProduct(String product, Integer amount) {
+        if (products.containsKey(product)) {
+            products.put(product, products.get(product) + amount);
+        }
+    }
+    
     private PublishServiceLocal lookupPublishServiceLocal() {
         try {
             Context c = new InitialContext();
             return (PublishServiceLocal) c.lookup("java:global/PushServer/PushServerEJB/PublishService!PublisherSubscriber.PublishServiceLocal");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private ProviderMainLocal lookupProviderMainLocal() {
+        try {
+            Context c = new InitialContext();
+            return (ProviderMainLocal) c.lookup("java:global/PushServer/PushServerEJB/ProviderMain!ChainOfResponsibility.ProviderMainLocal");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
