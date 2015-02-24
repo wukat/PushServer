@@ -18,14 +18,20 @@
                     for (var i in recipe) {
                         $('#recipe').append('<span>' + recipe[i] + '</span><br>');
                     }
-                    publicOrders(data.orders);
+                    if (data.hasOwnProperty('orders')) {
+                        publicOrders(data.orders);
+                    }
                 });
             }
             function subscribe() {
                 var plebeianBar = document.getElementById("Plebeian Bar").checked;
                 var luxuryBar = document.getElementById("Luxury Bar").checked;
                 $.post('BarSubscriberServlet', {"Bar Plebejski": plebeianBar, "Bar Luksus": luxuryBar}, function(data) {
-                    publicOrders(data.orders);
+                    if (data !== null) {
+                        if (data.hasOwnProperty('orders')) {
+                            publicOrders(data.orders);
+                        }
+                    }
                 });
             }
             function publicOrders(orders) {

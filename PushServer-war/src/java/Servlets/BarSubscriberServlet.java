@@ -34,12 +34,12 @@ public class BarSubscriberServlet extends HttpServlet implements MagicStrings {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         LinkedList<String> orders;
-        
+
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType("application/json");
-        
+
         Iterator<String> it = allBars.iterator();
         while (it.hasNext()) {
             String actualBar = it.next();
@@ -49,15 +49,17 @@ public class BarSubscriberServlet extends HttpServlet implements MagicStrings {
                 barman.unregister(actualBar);
             }
         }
-        
+
         orders = barman.getOrdersList();
-        try (PrintWriter out = response.getWriter()) {
-            out.write(new JSONObject()
-                    .put(ORDERS, new JSONArray(orders))
-                    .toString());
-        } catch (JSONException e) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, EXCEPTION_CAUGHT, e);
-            throw new ServletException(e.getMessage(), e);
+        if (orders.size() > 0) {
+            try (PrintWriter out = response.getWriter()) {
+                out.write(new JSONObject()
+                        .put(ORDERS, new JSONArray(orders))
+                        .toString());
+            } catch (JSONException e) {
+                Logger.getLogger(getClass().getName()).log(Level.SEVERE, EXCEPTION_CAUGHT, e);
+                throw new ServletException(e.getMessage(), e);
+            }
         }
         response.getWriter().flush();
     }
@@ -76,7 +78,7 @@ public class BarSubscriberServlet extends HttpServlet implements MagicStrings {
 
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "BarSubscriberServlet";
     }
 
 }

@@ -38,10 +38,12 @@ public class AlcoholMakerServlet extends HttpServlet implements MagicStrings {
         recipe = barman.placeOrder(alcoholType, alcohol);
         orders = barman.getOrdersList();
         try (PrintWriter out = response.getWriter()) {
-            out.write(new JSONObject()
-                    .put(RECIPE, new JSONArray(recipe))
-                    .put(ORDERS, new JSONArray(orders))
-                    .toString());
+            JSONObject json = new JSONObject();
+            json.put(RECIPE, new JSONArray(recipe));
+            if (orders.size() > 0) {
+                json.put(ORDERS, new JSONArray(orders));
+            }
+            out.write(json.toString());
         } catch (JSONException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, EXCEPTION_CAUGHT, e);
             throw new ServletException(e.getMessage(), e);
@@ -63,7 +65,7 @@ public class AlcoholMakerServlet extends HttpServlet implements MagicStrings {
 
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "AlcoholMakerServlet";
     }
 
 }

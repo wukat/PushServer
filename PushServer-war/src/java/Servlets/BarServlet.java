@@ -68,7 +68,7 @@ public class BarServlet extends HttpServlet implements MagicStrings {
 
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "BarServlet";
     }
 
 }
