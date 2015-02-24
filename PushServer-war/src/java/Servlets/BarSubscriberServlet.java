@@ -7,17 +7,26 @@ package Servlets;
 
 import Bar.Barman;
 import Consts.MagicStrings;
+import static Consts.MagicStrings.EXCEPTION_CAUGHT;
+import static Consts.MagicStrings.ORDERS;
+import static Consts.MagicStrings.RECIPE;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 /**
  *
@@ -48,31 +57,31 @@ public class BarSubscriberServlet extends HttpServlet implements MagicStrings {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
-        Iterator<String> it = allBars.iterator();
         
+        LinkedList<String> orders;
+        
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.setContentType("application/json");
+        
+        Iterator<String> it = allBars.iterator();
         while (it.hasNext()) {
             String actualBar = it.next();
             if (request.getParameter(actualBar).equals("true")) {
-                System.out.println(actualBar + "true!!!!!!!!!!!!!");
                 barman.register(actualBar);
             } else {
-                System.out.println(actualBar + "false!!!!!!!!!!!!!");
                 barman.unregister(actualBar);
             }
         }
         
-        
-     /*   for (Map.Entry<String, Boolean> entry : newSubscriptionState.entrySet()) {
-            String key = entry.getKey();
-            Boolean value = entry.getValue();
-            if (value) {
-                barman.register(key);
-            } else {
-                barman.unregister(key);
-            }
-        }*/
+        orders = barman.getOrdersList();
+        try (PrintWriter out = response.getWriter()) {
+            out.write(new JSONObject()
+                    .put(ORDERS, new JSONArray(orders))
+                    .toString());
+        } catch (JSONException e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, EXCEPTION_CAUGHT, e);
+            throw new ServletException(e.getMessage(), e);
+        }
         response.getWriter().flush();
     }
 

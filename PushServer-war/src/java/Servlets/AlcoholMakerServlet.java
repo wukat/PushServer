@@ -45,7 +45,6 @@ public class AlcoholMakerServlet extends HttpServlet implements MagicStrings {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        
         String alcohol = request.getParameter(ALCOHOL);
         String alcoholType = request.getParameter(ALCOHOL_TYPE);
         LinkedList<String> recipe;

@@ -24,22 +24,24 @@
                     for (var i in recipe) {
                         $('#recipe').append('<span>' + recipe[i] + '</span><br>');
                     }
-                    var orders = data.orders;
-                    var toInsert = orders.length;
-                    while (($('#orders').children().length / 2) + toInsert > 5) {
-                        $('#orders').find(':first-child').remove();
-                    }
-                    for (var i in orders) {
-                        $('#orders').append('<span>' + orders[i] + '</span><br>');
-                    }
+                    publicOrders(data.orders);
                 });
             }
             function subscribe() {
                 var plebeianBar = document.getElementById("Plebeian Bar").checked;
                 var luxuryBar = document.getElementById("Luxury Bar").checked;
                 $.post('BarSubscriberServlet', {"Bar Plebejski": plebeianBar, "Bar Luksus": luxuryBar}, function(data) {
-                    
+                    publicOrders(data.orders);
                 });
+            }
+            function publicOrders(orders) {
+                var toInsert = orders.length;
+                while (($('#orders').children().length / 2) + toInsert > 5) {
+                    $('#orders').find(':first-child').remove();
+                }
+                for (var i in orders) {
+                    $('#orders').append('<span>' + orders[i] + '</span><br>');
+                }
             }
         </script>
     </head>
