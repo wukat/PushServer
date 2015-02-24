@@ -113,7 +113,7 @@ public abstract class BarAbstract implements BarLocal {
     private PublishServiceLocal lookupPublishServiceLocal() {
         try {
             Context c = new InitialContext();
-            return (PublishServiceLocal) c.lookup("java:global/PushServer/PushServerEJB/PublishService!PublisherSubscriber.PublishServiceLocal");
+            return (PublishServiceLocal) c.lookup("java:global/PushServer/PushServerEJB/PublishService!PublishSubscribe.PublishServiceLocal");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
