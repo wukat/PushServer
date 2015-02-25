@@ -132,7 +132,6 @@ Aplikacja została stworzona przy użyciu klasycznej dla Javy EE architektury.
 Jest to~model trójwarstwowy, składający się~z~widoku (strona klienta, interfejs graficzny), prezentera (servlety, JSP) i~modelu, czyli logiki i~danych reprezentowanych przez EJB. W~przypadku naszej aplikacji używane są~jedyne \textit{session beans}, które utożsamiane są~z~logiką aplikacji. Projekt nie wymagał użycia bazy danych.
 
 Każde zapytanie klienta jest przechwytywane przez servlet, który przekazuje je~do~logiki aplikacji. Wynik działania logiki jest przetwarzany na~odpowiedź i~odsyłany do~klienta. Używana jest głównie komunikacja asnychroniczna (AJAX - Asynchronous JavaScript and XML).
-
 \section{Użyte narzędzia}
 Do~implementacji posłużyliśmy się:
 \begin{itemize}
@@ -142,6 +141,23 @@ Do~implementacji posłużyliśmy się:
  \item Bootstrap,
  \item JavaScript + JQuery.
 \end{itemize}
+
+\section{Diagram ogólny}
+Diagram ogólny logiki aplikacji (na~podstawie interfejsów):
+\begin{center}
+ \includegraphics[width=14cm]{overview}
+\end{center}
+Krótki opis klas (interfejsów):
+\begin{description}
+ \item[BarmanLocal] reprezentuje pojedynczą sesję klienta (barmana). Jest on~przechowywany pomiędzy zapytaniami aż~do~wygaśnięcia sesji (session scoped). Barman potrafi tworzyć napoje w~przypisanym barze oraz przechowuje kolejkę z~ostatnimi zdarzeniami z~obserwowanych barów (jest subskrybentem, zapisywanym do~konkretnych tematów - barów). 
+ \item[BarLocal] singleton reprezentujący instancję baru. Posiada informacje konieczne do~zbudowania widoku (dostępne napoje, nazwa baru), używa odpowiedniej konkretnej fabryki do~tworzenia napojów. Tworząc napój generuje zdarzenie (jest wydawcą, utożsamiany z~tematem), które wysyła do~serwera PubSub (PublishServiceLocal). Dodatkowo wysyła żądanie do~ProviderMainLocal (nadzorca dostawców) w~przypadku braku produktu.
+ \item[AlcoholFactory] fabryka abstrakcyjna mogąca produkować drinki i~piwa. Szczegóły w~opisie wzorca Abstract factory.
+ \item[FilterUnit, PublishServiceLocal, SubscribeServiceLocal] szczegóły w~opisie wzorca PublishSubscribe.
+ \item[ProviderMainLocal, Provider] szczegóły w~opisie wzorca Chain of responsibility.
+\end{description}
+
+
+
 
 
 
@@ -155,7 +171,7 @@ Implementacja wzorców pozwala barmanom na~tworzenie wielu różnych napojów al
 Każdy bar (implementowany jako \textit{singleton bean}) posiada fabrykę konkretną (singleton) zawierającą metody wytwórcze służące do~tworzenia konkretnych napojów. Typy klas tworzonych napojów są~parametryzowane przez~argumenty wejściowe metod wytwórczych. 
 
 \begin{center}
- \includegraphics[width=16cm]{fabryka}
+ \includegraphics[width=16cm]{factory}
 \end{center}
 
 Dzięki takiemu podejściu barman odseparowany został od~klas konkretnych napojów - nie~zna składu tych napojów, do~realizacji zamówień klientów korzysta z~interfejsu abstrakcyjnego baru i~abstrakcyjnych produktów. 
