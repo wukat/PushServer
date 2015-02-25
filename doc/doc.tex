@@ -122,7 +122,28 @@ W~celu zaprezentowania samego mechanizmu piggy-back została dodana możliwość
 
 Warto dodać, że~barman to~pojedyncza sesja klienta.
 \chapter{Architektura}
-A tu co?
+\section{Zarys}
+Aplikacja została stworzona przy użyciu klasycznej dla Javy EE architektury.
+
+\begin{center}
+ \includegraphics[width=2cm]{arch}
+\end{center}
+
+Jest to~model trójwarstwowy, składający się~z~widoku (klient), presentera (servlety) i~modelu, czyli logiki i~danych reprezentowanych przez EJB. Projekt nie wymagał użycia bazy danych.
+
+Każde zapytanie klienta jest przechwytywane przez servlet, który przekazuje je~do~logiki aplikacji. Wynik działania logiki jest przetwarzany na~odpowiedź i~odsyłany do~klienta. Używana jest głównie komunikacja asnychroniczna (AJAX, Asynchronous JavaScript and XML).
+
+\section{Użyte narzędzia}
+Do~implementacji posłużyliśmy się:
+\begin{itemize}
+ \item Netbeans IDE 7.4,
+ \item serwer aplikacji GlassFish Server 4.0,
+ \item Jave EE 7.0,
+ \item Bootstrap,
+ \item JavaScript + JQuery.
+\end{itemize}
+
+
 
 \chapter{Wzorce projektowe}
 W ramach projektu zaimplementowane zostało kilka wzorców projektowych.
