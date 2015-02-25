@@ -125,11 +125,19 @@ Warto dodać, że~barman to~pojedyncza sesja klienta.
 A tu co?
 
 \chapter{Wzorce projektowe}
-W ramach projektu zaimplementowaliśmy następujące wzorce:
+W ramach projektu zaimplementowane zostało kilka wzorców projektowych.
+\section{Chain of responsibility}
+Implementacja wzorca ma~symulować rzeczywistych dostawców produktów. Bar, w~przypadku braku jakiegoś produktu, używa \textit{nadzorcy dostawców} (ProviderMain) w~celu wysłania żądania dostarczenia produktu. ProviderMain przekazuje zapytanie pierwszemu dostawcy;
+kolejni dostawcy przekazują je~dalej, jeśli nie potrafią go~zrealizować.
 
-\begin{itemize}
- \item 
-\end{itemize}
+\subsection{Szczegóły implementacji}
+Dostawcy są~implementowani przy pomocy \textit{stateless bean}, ponieważ reprezentują część logiki i~nie przechowują stanu. Nadzorca zawiera wstrzyknięte wszystkie elementy łańcuch, z~których tworzy ciąg zależności. Również jest to~\textit{stateless bean}.
 
+Razem z~treścią zapytania przekazywany jest obiekt pytający, który musi implementować interfejs ProductReceiver. Przy realizacji zlecenia jest on~bezpośrednio wykorzystywany.
+\begin{center}
+ \includegraphics[width=16cm]{chain}
+\end{center}
+
+Zastosowanie wzorca jest uzasadnione, ponieważ z~punktu widzenia baru nie jest ważne, który dostawca obsłuży zamówienie. Ponadto, nie ma~konieczności znania wszystkich dostawców.
 
 \end{document}
