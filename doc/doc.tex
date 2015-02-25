@@ -49,12 +49,12 @@
 \setlist[enumerate]{leftmargin=14mm}
 \def \longauthor{Krzysztof Spytkowski, Magdalena Warzecha}
 \author{Wojciech Kasperek, Agnieszka Maksylewicz,}
-\shortauthor{W. Kasperek, A. Maksylewicz, K. Spytkowski, M. Warzecha}
+\shortauthor{W. K., A. M., K. S., M. W.}
 
 \titlePL{Implementacja mechanizmu server-push z wykorzystaniem techniki piggy-back w technologii EJB3}
 \titleEN{}
 
-\shorttitlePL{Implementacja mechanizmu server-push z wykorzystaniem techniki piggy-back w technologii EJB3}
+\shorttitlePL{Implementacja mechanizmu server-push z wykorzystaniem techniki piggy-back (EJB3)}
 \shorttitleEN{}
 
 \thesistype{}
@@ -112,8 +112,15 @@ Klient wysyła zapytanie do~serwera w~celu wykonania pewnej operacji. Serwer ma~
 Jest to~rozwiązanie znacznie wydajniejsze niż~\textit{pooling}, ze~względu na~brak użycia dodatkowych zasobów klienta. Ma~jednak swoje wady, ponieważ informacje mogą nigdy nie dotrzeć do~klienta (w~przypadku nie wykonania zapytania) lub też~dotrzeć po~długim czasie. Lepszym rozwiązaniem jest \textit{comet}.
 
 \section{Opis pomysłu}
-Stworzona aplikacja to~symulacja działania niezależnych barów (bar plebejski, bar luksusowy) sprzedających napoje alkoholowe. W~każdym barze pracują barmani, których zadaniem jest realizacja zamówień klientów. Wspomniane bary mają w~swojej ofercie kilka typów napojów wyskokowych: piwa (jasne, ciemne) oraz~drinki (Bloody Mary, Pina Colada). W~zależności od~typu baru, barman korzysta z~różnych przepisów przy przygotowywaniu napojów (w~barze plebejskim zamiast części alkoholu dolewa wodę). Może się~jednak zdarzyć, że~w~barze zabraknie jakiegoś składnika koniecznego do~przygotowania napoju. W takim wypadku barman składa zamówienie u~zaprzyjaźnionego dostawcy, który natychmiastowo dostarcza brakujący składnik. Ważnym aspektem jest to, że~każdy barman może wybrać bary, które chciałby ''obserwować'' - wówczas będzie dostawał informacje o~zamówieniach zrealizowanych w~tych barach w~ostatnim czasie. 
+Ze względu na~dość ogólny charakter tematu, stworzyliśmy koncepcję pozwalającą pokazać działanie mechanizmu piggy-back oraz wykorzystanie wzorców projektowych.
 
+Opisywana aplikacja to~program do~obsługi barów - z~punktu widzenia barmana. Konkretnie, występują dwa rodzaje barów: plebejski i~luksusowy. Mają one w~swojej ofercie kilka typów napojów wyskokowych: piwa (jasne, ciemne) oraz~drinki (Bloody Mary, Pina Colada). W~zależności od~typu baru, barman korzysta z~różnych przepisów przygotowywania napojów (w~szczególności w~barze plebejskim zamiast części alkoholu dolewa wodę). 
+
+Bary przechowują stan - aktualnie posiadaną ilość produktów potrzebnych do~tworzenia napojów. Może się~zdarzyć, że~zabraknie jakiegoś składnika koniecznego do~przygotowania zamówienia. W~takim wypadku bar wysyła zamówienie do~dostawcy produktów, który natychmiastowo dostarcza brakujący składnik (jeśli jest to~możliwe). 
+
+W~celu zaprezentowania samego mechanizmu piggy-back została dodana możliwość obserwowania zamówień. Barman może wybrać bary, z~których chce otrzymywać informacje o~składanych zamówieniach. Dane te~są~dostarczane do~przeglądarki w~przypadku wykonania innego zapytania.
+
+Warto dodać, że~barman to~pojedyncza sesja klienta.
 \chapter{Architektura}
 A tu co?
 
