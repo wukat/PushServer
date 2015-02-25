@@ -129,7 +129,7 @@ Aplikacja została stworzona przy użyciu klasycznej dla Javy EE architektury.
  \includegraphics[width=6cm]{arch}
 \end{center}
 
-Jest to~model trójwarstwowy, składający się~z~widoku (klient), prezentera (servlety, JSP) i~modelu, czyli logiki i~danych reprezentowanych przez EJB. Projekt nie wymagał użycia bazy danych.
+Jest to~model trójwarstwowy, składający się~z~widoku (strona klienta, interfejs graficzny), prezentera (servlety, JSP) i~modelu, czyli logiki i~danych reprezentowanych przez EJB. W~przypadku naszej aplikacji używane są~jedyne \textit{session beans}, które utożsamiane są~z~logiką aplikacji. Projekt nie wymagał użycia bazy danych.
 
 Każde zapytanie klienta jest przechwytywane przez servlet, który przekazuje je~do~logiki aplikacji. Wynik działania logiki jest przetwarzany na~odpowiedź i~odsyłany do~klienta. Używana jest głównie komunikacja asnychroniczna (AJAX - Asynchronous JavaScript and XML).
 
