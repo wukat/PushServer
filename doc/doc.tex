@@ -147,6 +147,19 @@ Do~implementacji posłużyliśmy się:
 
 \chapter{Wzorce projektowe}
 W ramach projektu zaimplementowane zostało kilka wzorców projektowych.
+
+\section{Abstract factory, factory method, singleton}
+Implementacja wzorców pozwala barmanom na~tworzenie wielu różnych napojów alkoholowych, przy~czym~proporcje składników w~napojach zależne są~od~konkretnego baru, w~którym pracują. 
+
+\subsection{Szczegóły implementacji}
+Każdy bar (implementowany jako \textit{singleton bean}) posiada fabrykę konkretną (singleton) zawierającą metody wytwórcze służące do~tworzenia konkretnych napojów. Typy klas tworzonych napojów są~parametryzowane przez~argumenty wejściowe metod wytwórczych. 
+
+\begin{center}
+ \includegraphics[width=16cm]{fabryka}
+\end{center}
+
+Dzięki takiemu podejściu barman odseparowany został od~klas konkretnych napojów - nie~zna składu tych napojów, do~realizacji zamówień klientów korzysta z~interfejsu abstrakcyjnego baru i~abstrakcyjnych produktów. 
+
 \section{Chain of responsibility}
 Implementacja wzorca ma~symulować rzeczywistych dostawców produktów. Bar, w~przypadku braku jakiegoś produktu, używa \textit{nadzorcy dostawców} (ProviderMain) w~celu wysłania żądania dostarczenia produktu. ProviderMain przekazuje zapytanie pierwszemu dostawcy;
 kolejni dostawcy przekazują je~dalej, jeśli nie potrafią go~zrealizować.
