@@ -204,6 +204,16 @@ Wzorzec pozwala uniezależnić nadawców od~odbiorców, ponieważ wysyłane wiad
 
 Jedyną możliwością komunikacji między nadawcami a~odbiorcami są~wiadomości.
 
+\section{Page Controller}
+Implementacja wzorca pozwala na obsługę żądań kierowanych do konkretnej strony - \textit{index.html}. 
+
+\subsection{Szczegóły implementacji}
+Kontroler strony przetwarzanie zapytanie, modyfikuje model (\textit{session bean'y} - Bar i Barman) oraz~wskazuje widok jakiego należy użyć (bar.jsp) przekazując mu~niezbędne informacje. 
+
+\begin{center}
+ \includegraphics[width=11cm]{kontroler}
+\end{center}
+
 \chapter{Przykład}
 \begin{center}
  \includegraphics[width=16cm]{zrzut1}
