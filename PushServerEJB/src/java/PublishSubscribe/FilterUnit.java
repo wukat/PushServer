@@ -11,7 +11,7 @@ public class FilterUnit {
 
     private final LinkedHashMap<String, LinkedHashSet<Subscriber>> subscribers = new LinkedHashMap<>();
 
-    public LinkedHashSet<Subscriber> getTopicSubsribers(String topic) {
+    public LinkedHashSet<Subscriber> getTopicSubscribers(String topic) {
         for (String actTopic : subscribers.keySet()) {
             if (actTopic.equals(topic)) {
                 return subscribers.get(actTopic);
@@ -20,7 +20,7 @@ public class FilterUnit {
         return new LinkedHashSet<>();
     }
 
-    public void addSubsriber(String topic, Subscriber subscriber) {
+    public void addSubscriber(String topic, Subscriber subscriber) {
         if (subscribers.containsKey(topic)) {
             subscribers.get(topic).add(subscriber);
         } else {

@@ -11,7 +11,7 @@ public class SubscribeService implements SubscribeServiceLocal {
     
     @Override
     public void registerSubscriber(String topic, Subscriber subscriber) {
-        filterUnit.addSubsriber(topic, subscriber);
+        filterUnit.addSubscriber(topic, subscriber);
     }
     
     @Override

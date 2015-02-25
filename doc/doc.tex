@@ -140,4 +140,20 @@ Razem z~treścią zapytania przekazywany jest obiekt pytający, który musi impl
 
 Zastosowanie wzorca jest uzasadnione, ponieważ z~punktu widzenia baru nie jest ważne, który dostawca obsłuży zamówienie. Ponadto, nie ma~konieczności znania wszystkich dostawców.
 
+\section{PublishSubscribe}
+Implementacja wzorca ma~zapewnić Barmanom (subscribers) możliwość obserwowania zamówień w~różnych Barach (publishers). Bar, obsługując zamówienie, tworzy zdarzenie, które wysyła do~PublishService. PublishService korzysta z~informacji o~subskrybentach udostępnianych przez FilterUnit, i~przesyła do nich dane. Subskrybenci mogą rejestrować się~do~danego tematu poprzez SubscribeService, który uaktualnia dane przechowywane w~FilterUnit.
+
+\subsection{Szczegóły implementacji}
+FilterUnit jest implementowany jako \textit{singleton bean}, ponieważ musi przechowywać stan i~jest pojedynczym obiektem. Z~kolei PublishService i~SubscribeService to~\textit{stateless bean} reprezentujące część logiki. Interfejsy Publisher i~Subscriber umożliwiają korzystanie z~serwera PubSub wielu różnym klasom. Przekazywane wiadomości muszą implementować interfejs Event.
+
+\begin{center}
+ \includegraphics[width=14cm]{pubsub}
+\end{center}
+
+Wzorzec pozwala uniezależnić nadawców od~odbiorców, ponieważ wysyłane wiadomości są~opatrywane nazwą nadawcy (tematem), a~nie danymi odbiorców. Ponadto odpowiedzialność za~dostarczenie informacji jest oddelegowana poza klasę tworzącą wiadomość. 
+
+Jedyną możliwością komunikacji między nadawcami a~odbiorcami są~wiadomości.
+
+
+
 \end{document}

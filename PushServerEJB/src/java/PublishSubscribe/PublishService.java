@@ -12,7 +12,7 @@ public class PublishService implements PublishServiceLocal {
 
     @Override
     public void receiveEvent(Event event) {
-        sendEvent(filterUnit.getTopicSubsribers(event.getTopic()), event);
+        sendEvent(filterUnit.getTopicSubscribers(event.getTopic()), event);
     }
 
     private void sendEvent(LinkedHashSet<Subscriber> subscribers, Event event) {
