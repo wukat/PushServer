@@ -97,7 +97,7 @@ Istnieje klika metod pozwalających osiągnąć zamierzony efekt. Są~to:
 \begin{description}
  \item[pooling] odpytywanie serwera w~stałym krótkim interwale czasowym
  \item[piggy-back] opisany w~kolejnej sekcji
- \item[comet] podtrzymywanie zapytania przez serwer do~momentu wygaśnięcia czasowego (timeout) lub do~przybycia oczekiwanych informacji (zwracanych klientowi)
+ \item[comet] podtrzymywanie zapytania przez serwer do~momentu wygaśnięcia czasowego (timeout) lub do~pojawienia się oczekiwanych informacji (zwracanych klientowi)
 \end{description}
 
 
@@ -109,7 +109,7 @@ Klient wysyła zapytanie do~serwera w~celu wykonania pewnej operacji. Serwer ma~
  \includegraphics[width=8cm]{piggy}
 \end{center}
 
-Jest to~rozwiązanie znacznie wydajniejsze niż~\textit{pooling}, ponieważ nie wykorzystuje dodatkowych zasobów klienta. Ma~jednak swoje wady, ponieważ informacje mogą nigdy nie dotrzeć do~klienta (w~przypadku nie wykonania zapytania) lub też~dotrzeć po~długim czasie. Lepszym rozwiązaniem jest \textit{comet}.
+Jest to~rozwiązanie znacznie wydajniejsze niż~\textit{pooling}, ze~względu na~brak użycia dodatkowych zasobów klienta. Ma~jednak swoje wady, ponieważ informacje mogą nigdy nie dotrzeć do~klienta (w~przypadku nie wykonania zapytania) lub też~dotrzeć po~długim czasie. Lepszym rozwiązaniem jest \textit{comet}.
 
 \section{Opis pomysłu}
 Stworzona aplikacja to~symulacja działania niezależnych barów (bar plebejski, bar luksusowy) sprzedających napoje alkoholowe. W~każdym barze pracują barmani, których zadaniem jest realizacja zamówień klientów. Wspomniane bary mają w~swojej ofercie kilka typów napojów wyskokowych: piwa (jasne, ciemne) oraz~drinki (Bloody Mary, Pina Colada). W~zależności od~typu baru, barman korzysta z~różnych przepisów przy przygotowywaniu napojów (w~barze plebejskim zamiast części alkoholu dolewa wodę). Może się~jednak zdarzyć, że~w~barze zabraknie jakiegoś składnika koniecznego do~przygotowania napoju. W takim wypadku barman składa zamówienie u~zaprzyjaźnionego dostawcy, który natychmiastowo dostarcza brakujący składnik. Ważnym aspektem jest to, że~każdy barman może wybrać bary, które chciałby ''obserwować'' - wówczas będzie dostawał informacje o~zamówieniach zrealizowanych w~tych barach w~ostatnim czasie. 
